@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zentropy Solutions | Design, 3D Printing &amp; Scanning</title>
+    <meta
+      name="description"
+      content="Zentropy Solutions is a design and manufacturing house offering 3D printing, resin printing, 3D scanning, CAD design, prototyping, and practical engineering support."
+    >
+    <meta property="og:title" content="Zentropy Solutions">
+    <meta
+      property="og:description"
+      content="Design, 3D printing, resin printing, 3D scanning, prototyping, and manufacturing support."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zentropy.solutions/">
+    <meta property="og:image" content="https://zentropy.solutions/assets/zentropy-social.png">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://zentropy.solutions/">
+    <link rel="icon" href="assets/zentropy-favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/zentropy-favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-site-header>
+      <a class="brand" href="#top" aria-label="Zentropy Solutions home">
+        <img src="assets/zentropy-wordmark.webp" alt="Zentropy Solutions">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary" data-primary-nav>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#fit">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:hello@zentropy.solutions?subject=Project%20enquiry">Get a quote</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">3D printing / scanning / design</p>
+            <h1 id="hero-title">Design it. Scan it. Print it. Make it real.</h1>
+            <p class="hero-lede">
+              Zentropy Solutions is a design house with engineering and manufacturing built in:
+              practical CAD, resin detail work, 3D scanning, prototypes, and functional printed parts.
+            </p>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="button button-primary" href="mailto:hello@zentropy.solutions?subject=Project%20enquiry">
+                Start a build
+              </a>
+              <a class="button button-secondary" href="#services">Explore services</a>
+            </div>
+          </div>
+
+          <div class="hero-logo-panel" aria-label="Zentropy Solutions mark">
+            <img src="assets/zentropy-mark.webp" alt="Zentropy Solutions mark">
+          </div>
+
+          <dl class="signal-list" aria-label="Zentropy capabilities">
+            <div>
+              <dt>Concept to CAD</dt>
+              <dd>Design, modelling, iteration, and manufacturable files.</dd>
+            </div>
+            <div>
+              <dt>Print Lab</dt>
+              <dd>FDM and resin printing for prototypes, parts, and detailed work.</dd>
+            </div>
+            <div>
+              <dt>Scan to Model</dt>
+              <dd>Capture real parts and turn them into usable digital geometry.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="intro-section" aria-labelledby="intro-title">
+        <div class="section-shell intro-grid">
+          <div>
+            <p class="section-kicker">What Zentropy does</p>
+            <h2 id="intro-title">A practical design and manufacturing house.</h2>
+          </div>
+          <div class="intro-copy">
+            <p>
+              We help turn ideas, broken parts, scans, sketches, and half-formed concepts into
+              physical things that can be tested, improved, and used.
+            </p>
+            <p>
+              The work sits between design studio, engineering bench, and manufacturing floor:
+              enough creativity to shape the idea, enough technical discipline to make it real,
+              and enough production sense to keep the next step grounded.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-section" id="services" aria-labelledby="services-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="section-kicker">Capabilities</p>
+            <h2 id="services-title">From digital model to physical part.</h2>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">01</span>
+              <h3>3D Printing</h3>
+              <p>
+                Functional FDM prints for prototypes, fixtures, replacement parts, housings, test
+                pieces, and small production runs.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">02</span>
+              <h3>Resin Printing</h3>
+              <p>
+                High-detail resin work for miniatures, product details, fine geometry, presentation
+                models, and parts where surface finish matters.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">03</span>
+              <h3>3D Scanning</h3>
+              <p>
+                Capture physical objects for reverse engineering, fit checks, digital archiving,
+                duplication, modification, or restoration.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">04</span>
+              <h3>Design &amp; CAD</h3>
+              <p>
+                Clean modelling, part design, assemblies, print-ready files, and practical design
+                support for ideas that need structure.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">05</span>
+              <h3>Engineering Support</h3>
+              <p>
+                Material choices, tolerances, part fit, design-for-manufacture decisions, and the
+                quiet details that make prototypes more useful.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-icon" aria-hidden="true">06</span>
+              <h3>Manufacturing Runs</h3>
+              <p>
+                Short-run production, batch printing, finishing guidance, and iteration support
+                when a one-off part needs to become repeatable.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-section" id="process" aria-labelledby="process-title">
+        <div class="section-shell process-layout">
+          <div class="section-heading process-heading">
+            <p class="section-kicker">How we work</p>
+            <h2 id="process-title">Make the first version real, then make it better.</h2>
+            <p>
+              We keep the process direct: understand the part, choose the right path, build a useful
+              first version, then refine around fit, finish, strength, and repeatability.
+            </p>
+          </div>
+
+          <ol class="process-list">
+            <li>
+              <span>Brief</span>
+              <p>Define the goal, constraints, dimensions, finish, use case, and success criteria.</p>
+            </li>
+            <li>
+              <span>Model</span>
+              <p>Create or clean up CAD from sketches, scans, reference parts, or existing files.</p>
+            </li>
+            <li>
+              <span>Make</span>
+              <p>Print, scan, test, and prepare the part with the right material and process.</p>
+            </li>
+            <li>
+              <span>Refine</span>
+              <p>Improve the design around real-world feedback before repeating or scaling it.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="fit-section" id="fit" aria-labelledby="fit-title">
+        <div class="section-shell fit-layout">
+          <div>
+            <p class="section-kicker">Project fit</p>
+            <h2 id="fit-title">Bring the messy middle.</h2>
+          </div>
+
+          <div class="fit-panel">
+            <ul class="fit-list">
+              <li>A part exists, but the digital file does not.</li>
+              <li>A concept needs CAD before it can become physical.</li>
+              <li>A prototype needs to be printed, tested, and changed quickly.</li>
+              <li>A detailed model needs the finish and precision of resin printing.</li>
+              <li>A custom part needs design thinking and manufacturing sense together.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-shell contact-layout">
+          <div>
+            <p class="section-kicker">Start a project</p>
+            <h2 id="contact-title">Tell us what you are making.</h2>
+          </div>
+          <div class="contact-copy">
+            <p>
+              Send through the idea, sketch, scan, broken part, file, or reference photo. We will
+              help work out the best path from design to physical result.
+            </p>
+            <a class="button button-primary" href="mailto:hello@zentropy.solutions?subject=Project%20enquiry">
+              hello@zentropy.solutions
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-layout">
+        <p>&copy; <span data-year></span> Zentropy Solutions. All rights reserved.</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>

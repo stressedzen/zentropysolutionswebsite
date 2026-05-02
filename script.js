@@ -51,7 +51,14 @@ if (navToggle && primaryNav) {
 
 if (canvas instanceof HTMLCanvasElement) {
   const context = canvas.getContext("2d");
-  const palette = ["#65eff6", "#2fa9bc", "#9da2a6", "#ecedee"];
+  const defaultPalette = ["#65eff6", "#2fa9bc", "#9da2a6", "#ecedee"];
+  const customPalette = canvas.dataset.palette
+    ?.split(",")
+    .map((color) => color.trim())
+    .filter(Boolean);
+  const palette = customPalette?.length ? customPalette : defaultPalette;
+  const strokeRgb = canvas.dataset.strokeRgb || "101, 239, 246";
+  const backgroundColor = canvas.dataset.background || "#000000";
   let width = 0;
   let height = 0;
   let pixelRatio = 1;
@@ -99,7 +106,7 @@ if (canvas instanceof HTMLCanvasElement) {
     }
 
     context.clearRect(0, 0, width, height);
-    context.fillStyle = "#000000";
+    context.fillStyle = backgroundColor;
     context.fillRect(0, 0, width, height);
 
     const time = frame * 0.006;
@@ -124,7 +131,7 @@ if (canvas instanceof HTMLCanvasElement) {
 
         if (distance < 138) {
           const alpha = Math.max(0, 1 - distance / 138) * 0.2;
-          context.strokeStyle = `rgba(101, 239, 246, ${alpha})`;
+          context.strokeStyle = `rgba(${strokeRgb}, ${alpha})`;
           context.beginPath();
           context.moveTo(point.x, point.y);
           context.lineTo(nextPoint.x, nextPoint.y);

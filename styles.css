@@ -585,6 +585,119 @@ h2 {
   font-weight: 800;
 }
 
+.primary-nav a[aria-current="page"] {
+  color: var(--white);
+  background: rgba(101, 239, 246, 0.12);
+}
+
+.modern-relic-page {
+  --black: #020817;
+  --near-black: #030917;
+  --surface: #07101d;
+  --surface-strong: #0b1421;
+  --panel: #0f1825;
+  --panel-light: #182433;
+  --line: rgba(232, 237, 234, 0.16);
+  --line-strong: rgba(212, 168, 74, 0.46);
+  --text: #f7f3e8;
+  --text-soft: #d8ddda;
+  --muted: #a7b1ae;
+  --cyan: #d4a84a;
+  --cyan-deep: #97691b;
+  --steel: #bdc3b1;
+  --steel-dark: #3e5364;
+  --shadow-cyan: 0 0 32px rgba(212, 168, 74, 0.2);
+  background: var(--black);
+}
+
+.modern-relic-page .site-header.is-scrolled,
+.modern-relic-page .site-header.nav-is-open {
+  border-bottom-color: rgba(212, 168, 74, 0.32);
+}
+
+.modern-relic-page .primary-nav a:hover,
+.modern-relic-page .primary-nav a:focus-visible,
+.modern-relic-page .primary-nav a[aria-current="page"] {
+  background: rgba(212, 168, 74, 0.12);
+}
+
+.modern-relic-hero {
+  background: #020817;
+}
+
+.modern-relic-hero .hero-canvas {
+  opacity: 0.28;
+}
+
+.modern-relic-hero .hero-grid {
+  box-shadow: inset 0 -1px 0 rgba(212, 168, 74, 0.24);
+}
+
+.modern-relic-hero-inner {
+  grid-template-columns: minmax(0, 0.86fr) minmax(390px, 1.14fr);
+}
+
+.modern-relic-logo-plaque {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 1.35rem;
+  background: #f7f3e8;
+  border: 1px solid rgba(212, 168, 74, 0.34);
+  border-radius: 8px;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.44),
+    0 0 42px rgba(212, 168, 74, 0.1);
+}
+
+.modern-relic-logo-plaque img {
+  display: block;
+  width: min(100%, 640px);
+  height: auto;
+}
+
+.modern-relic-page .button-primary {
+  color: #020817;
+  background: #d4a84a;
+  box-shadow: var(--shadow-cyan);
+}
+
+.modern-relic-page .button-secondary:hover,
+.modern-relic-page .button-secondary:focus-visible {
+  border-color: rgba(212, 168, 74, 0.58);
+}
+
+.modern-relic-page .signal-list div,
+.modern-relic-page .service-card,
+.modern-relic-page .process-list li,
+.modern-relic-page .fit-panel {
+  border-color: rgba(212, 168, 74, 0.22);
+}
+
+.modern-relic-page .service-card:hover {
+  border-color: rgba(212, 168, 74, 0.48);
+}
+
+.modern-relic-page .service-card:nth-child(2n) .service-icon {
+  color: var(--white);
+  background: #3e5364;
+  border-color: rgba(189, 195, 177, 0.5);
+}
+
+.modern-relic-page .service-card:nth-child(3n) .service-icon {
+  color: #020817;
+  background: #bdc3b1;
+}
+
+.modern-relic-intro {
+  background: #07101d;
+}
+
+.modern-relic-fit {
+  background: #07101d;
+}
+
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: auto auto;
@@ -655,6 +768,12 @@ h2 {
     width: min(100%, 520px);
   }
 
+  .modern-relic-logo-plaque {
+    order: -1;
+    width: min(100%, 720px);
+    justify-content: flex-start;
+  }
+
   .hero h1 {
     font-size: 3.9rem;
   }
@@ -709,6 +828,10 @@ h2 {
 
   .hero-logo-panel img {
     width: min(100%, 420px);
+  }
+
+  .modern-relic-logo-plaque {
+    padding: 0.8rem;
   }
 
   .button {

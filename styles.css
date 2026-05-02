@@ -110,6 +110,24 @@ p:last-child {
   height: auto;
 }
 
+.nav-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 240px;
+  height: 44px;
+  padding: 0.28rem 0.62rem;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.brand .nav-logo {
+  display: block;
+  width: auto;
+  max-width: 220px;
+  max-height: 38px;
+}
+
 .primary-nav {
   justify-self: center;
   display: flex;
@@ -640,8 +658,50 @@ h2 {
 
 .venture-card-logo {
   display: block;
-  width: min(100%, 360px);
+  width: auto;
   height: auto;
+}
+
+.venture-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 238px;
+  padding: 1.15rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.venture-card-media img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+}
+
+.venture-card-media-modern {
+  background: #f7f3e8;
+  border-color: rgba(212, 168, 74, 0.32);
+  box-shadow: inset 0 0 0 1px rgba(2, 8, 23, 0.05);
+}
+
+.venture-card-media-modern img {
+  max-height: 176px;
+}
+
+.venture-card-media-muse {
+  background:
+    radial-gradient(circle at 50% 24%, rgba(166, 124, 123, 0.24), transparent 11rem),
+    #3e2f2f;
+  border-color: rgba(220, 200, 179, 0.32);
+  box-shadow: inset 0 0 0 1px rgba(243, 237, 229, 0.05);
+}
+
+.venture-card-media-muse img {
+  max-height: 162px;
 }
 
 .venture-card-copy {
@@ -722,6 +782,17 @@ h2 {
 .modern-relic-page .site-header.is-scrolled,
 .modern-relic-page .site-header.nav-is-open {
   border-bottom-color: rgba(212, 168, 74, 0.32);
+}
+
+.modern-relic-page .nav-logo-wrap-modern {
+  padding: 0.24rem 0.6rem;
+  background: #f7f3e8;
+  border: 1px solid rgba(212, 168, 74, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(2, 8, 23, 0.05);
+}
+
+.modern-relic-page .brand .nav-logo {
+  max-height: 34px;
 }
 
 .modern-relic-page .primary-nav a:hover,
@@ -807,13 +878,6 @@ h2 {
   background: #07101d;
 }
 
-.venture-card-logo-muse {
-  padding: 1rem;
-  background: #f3ede5;
-  border: 1px solid rgba(142, 123, 92, 0.34);
-  border-radius: 8px;
-}
-
 .muses-emporium-page {
   --muse-espresso: #3e2f2f;
   --muse-dusty-rose: #a67c7b;
@@ -870,6 +934,18 @@ h2 {
   color: var(--muse-espresso);
   background: var(--muse-parchment);
   box-shadow: 0 0 32px rgba(220, 200, 179, 0.16);
+}
+
+.muses-emporium-page .nav-logo-wrap-muse {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.muses-emporium-page .brand .nav-logo {
+  width: 176px;
+  max-width: 176px;
+  max-height: 44px;
 }
 
 .muse-hero {
@@ -1084,6 +1160,11 @@ h2 {
     width: 210px;
   }
 
+  .brand .nav-logo {
+    max-width: 190px;
+    max-height: 36px;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1201,6 +1282,17 @@ h2 {
     width: 180px;
   }
 
+  .nav-logo-wrap {
+    max-width: 190px;
+    height: 40px;
+    padding: 0.24rem 0.5rem;
+  }
+
+  .brand .nav-logo {
+    max-width: 170px;
+    max-height: 32px;
+  }
+
   .hero {
     padding: 6.4rem 1rem 3.3rem;
   }
@@ -1266,8 +1358,21 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .venture-card-logo {
-    width: min(100%, 300px);
+  .venture-card-media {
+    min-height: 208px;
+    padding: 1rem;
+  }
+
+  .venture-card-media img {
+    max-height: 152px;
+  }
+
+  .venture-card-media-modern img {
+    max-height: 144px;
+  }
+
+  .venture-card-media-muse img {
+    max-height: 136px;
   }
 
   .service-card {

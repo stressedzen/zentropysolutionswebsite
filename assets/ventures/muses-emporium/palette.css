@@ -1,0 +1,17 @@
+:root {
+  --muse-espresso: #3E2F2F;
+  --muse-dusty-rose: #A67C7B;
+  --muse-parchment: #F3EDE5;
+  --muse-warm-gold: #8E7B5C;
+  --muse-linen: #DCC8B3;
+}
+
+.logo-light {
+  background: var(--muse-parchment);
+  color: var(--muse-espresso);
+}
+
+.logo-dark {
+  background: var(--muse-espresso);
+  color: var(--muse-parchment);
+}

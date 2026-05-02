@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Muse’s Emporium monogram</title>
+  <desc id="desc">M monogram with leaves and star</desc>
+  <rect width="400" height="400" fill="transparent"/>
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#8E7B5C" stroke-width="5"/>
+  <circle cx="200" cy="200" r="145" fill="none" stroke="#A67C7B" stroke-width="2" stroke-dasharray="8 10"/>
+  <text x="200" y="240" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="165" fill="#A67C7B">M</text>
+  <path d="M200 72 L211 101 L240 112 L211 123 L200 152 L189 123 L160 112 L189 101 Z" fill="#8E7B5C"/>
+  <path d="M118 250 C95 225, 84 200, 82 175 M282 250 C305 225, 316 200, 318 175" fill="none" stroke="#8E7B5C" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="105" cy="217" rx="10" ry="22" transform="rotate(-35 105 217)" fill="none" stroke="#8E7B5C" stroke-width="5"/>
+  <ellipse cx="96" cy="188" rx="9" ry="20" transform="rotate(-20 96 188)" fill="none" stroke="#8E7B5C" stroke-width="5"/>
+  <ellipse cx="295" cy="217" rx="10" ry="22" transform="rotate(35 295 217)" fill="none" stroke="#8E7B5C" stroke-width="5"/>
+  <ellipse cx="304" cy="188" rx="9" ry="20" transform="rotate(20 304 188)" fill="none" stroke="#8E7B5C" stroke-width="5"/>
+</svg>

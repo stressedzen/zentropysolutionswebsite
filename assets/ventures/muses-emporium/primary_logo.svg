@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-labelledby="title desc">
+  <title id="title">Muse’s Emporium primary logo</title>
+  <desc id="desc">Elegant wordmark logo for Muse’s Emporium</desc>
+  <rect width="800" height="300" fill="#F3EDE5"/>
+  <g fill="none" stroke="#8E7B5C" stroke-width="2">
+    <path d="M330 60 C350 35, 380 35, 400 60 C420 35, 450 35, 470 60"/>
+    <path d="M310 88 C270 70, 240 90, 220 125"/>
+    <path d="M490 88 C530 70, 560 90, 580 125"/>
+  </g>
+  <text x="400" y="150" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="74" letter-spacing="13" fill="#3E2F2F">MUSE’S</text>
+  <text x="400" y="210" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="42" letter-spacing="16" fill="#A67C7B">EMPORIUM</text>
+  <line x1="270" y1="235" x2="530" y2="235" stroke="#8E7B5C" stroke-width="2"/>
+  <text x="400" y="267" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="18" letter-spacing="4" fill="#3E2F2F">CURATED FOR PERFORMERS. CRAFTED FOR YOU.</text>
+</svg>

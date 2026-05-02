@@ -6,9 +6,15 @@ support.
 
 ## Files
 
-- `index.html` - page structure and site copy
-- `modern-relic/index.html` - Modern Relic project landing page
+- `index.html` - homepage hub for the studio
+- `services/index.html` - capabilities overview
+- `ventures/index.html` - ventures index
+- `ventures/modern-relic/index.html` - Modern Relic landing page
+- `projects/index.html` - project archive placeholder
+- `contact/index.html` - contact page
 - `styles.css` - responsive layout and visual design
 - `script.js` - mobile navigation, header state, hero canvas, and footer year
-- `assets/` - optimized Zentropy and Modern Relic logo, favicon, and social preview assets
+- `assets/icons/` - favicon assets
+- `assets/img/` - social preview and image assets
+- `assets/logos/` - Zentropy and Modern Relic logos
 - `CNAME` - GitHub Pages custom domain configuration

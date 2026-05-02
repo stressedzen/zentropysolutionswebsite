@@ -46,6 +46,12 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 p,
 h1,
 h2,
@@ -105,9 +111,7 @@ p:last-child {
 }
 
 .brand img {
-  display: block;
   width: 230px;
-  height: auto;
 }
 
 .nav-logo-wrap {
@@ -260,9 +264,7 @@ p:last-child {
 }
 
 .hero-logo-panel img {
-  display: block;
   width: min(100%, 650px);
-  height: auto;
   filter: drop-shadow(0 0 32px rgba(101, 239, 246, 0.2));
 }
 
@@ -657,9 +659,7 @@ h2 {
 }
 
 .venture-card-logo {
-  display: block;
   width: auto;
-  height: auto;
 }
 
 .venture-card-media {
@@ -832,9 +832,7 @@ h2 {
 }
 
 .modern-relic-logo-plaque img {
-  display: block;
   width: min(100%, 640px);
-  height: auto;
 }
 
 .modern-relic-page .button-primary {
@@ -1016,9 +1014,7 @@ h2 {
 }
 
 .muse-logo-plaque img {
-  display: block;
   width: min(100%, 640px);
-  height: auto;
 }
 
 .muses-emporium-page .button-primary {
@@ -1107,9 +1103,7 @@ h2 {
 }
 
 .muse-card-feature img {
-  display: block;
   width: min(100%, 360px);
-  height: auto;
   margin-bottom: 1.2rem;
 }
 
@@ -1272,6 +1266,17 @@ h2 {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-logo-panel img {
+    width: min(100%, 380px);
+  }
+
+  .modern-relic-logo-plaque img,
+  .muse-logo-plaque img {
+    max-height: 260px;
+  }
+}
+
 @media (max-width: 680px) {
   .site-header {
     min-height: 68px;
@@ -1319,7 +1324,15 @@ h2 {
   }
 
   .hero-logo-panel img {
-    width: min(100%, 420px);
+    width: min(100%, 340px);
+  }
+
+  .modern-relic-logo-plaque img {
+    max-height: 220px;
+  }
+
+  .muse-logo-plaque img {
+    max-height: 220px;
   }
 
   .modern-relic-logo-plaque {
@@ -1359,20 +1372,20 @@ h2 {
   }
 
   .venture-card-media {
-    min-height: 208px;
-    padding: 1rem;
+    min-height: 192px;
+    padding: 0.9rem;
   }
 
   .venture-card-media img {
-    max-height: 152px;
+    max-height: 136px;
   }
 
   .venture-card-media-modern img {
-    max-height: 144px;
+    max-height: 126px;
   }
 
   .venture-card-media-muse img {
-    max-height: 136px;
+    max-height: 120px;
   }
 
   .service-card {

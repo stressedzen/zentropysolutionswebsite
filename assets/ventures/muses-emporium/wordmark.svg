@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">Muse’s Emporium wordmark</title>
+  <desc id="desc">Simple horizontal wordmark for Muse’s Emporium</desc>
+  <rect width="720" height="180" fill="transparent"/>
+  <text x="360" y="90" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="70" letter-spacing="12" fill="#3E2F2F">MUSE’S</text>
+  <text x="360" y="142" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="38" letter-spacing="15" fill="#A67C7B">EMPORIUM</text>
+</svg>

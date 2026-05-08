@@ -704,8 +704,44 @@ h2 {
   max-height: 162px;
 }
 
+.venture-card-media-loreloom {
+  background:
+    radial-gradient(circle at 70% 34%, rgba(200, 147, 47, 0.22), transparent 9rem),
+    radial-gradient(circle at 28% 70%, rgba(123, 43, 125, 0.16), transparent 10rem),
+    linear-gradient(135deg, #fff8ec 0%, #f4e6cf 100%);
+  border-color: rgba(200, 147, 47, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(51, 19, 52, 0.05);
+}
+
+.venture-card-media-loreloom img {
+  max-height: 164px;
+  filter: drop-shadow(0 16px 24px rgba(51, 19, 52, 0.24));
+}
+
 .venture-card-copy {
   color: var(--text-soft);
+}
+
+.venture-card-status {
+  color: var(--text-soft);
+  font-weight: 800;
+}
+
+.venture-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+}
+
+.venture-card-logo-loreloom {
+  width: min(100%, 360px);
+  padding: 0.8rem;
+  background:
+    radial-gradient(circle at 76% 22%, rgba(200, 147, 47, 0.22), transparent 8rem),
+    linear-gradient(135deg, #fff8ec, #f0dfc2);
+  border: 1px solid rgba(200, 147, 47, 0.32);
+  border-radius: 8px;
+  filter: drop-shadow(0 16px 26px rgba(51, 19, 52, 0.24));
 }
 
 .venture-card-placeholder {
@@ -1145,6 +1181,287 @@ h2 {
   object-fit: contain;
 }
 
+.loreloom-page {
+  --loreloom-plum: #331334;
+  --loreloom-plum-bright: #7b2b7d;
+  --loreloom-gold: #c8932f;
+  --loreloom-parchment: #f6ead4;
+  --loreloom-ink: #241325;
+  --loreloom-brown: #76573a;
+  --black: var(--loreloom-plum);
+  --near-black: #2a102b;
+  --surface: var(--loreloom-parchment);
+  --surface-strong: #fff8ec;
+  --panel: #fffaf1;
+  --panel-light: #ead5b8;
+  --line: rgba(51, 19, 52, 0.18);
+  --line-strong: rgba(200, 147, 47, 0.52);
+  --text: var(--loreloom-ink);
+  --text-soft: #604660;
+  --muted: #74576f;
+  --cyan: var(--loreloom-gold);
+  --cyan-deep: var(--loreloom-plum-bright);
+  --steel: #ead5b8;
+  --steel-dark: #5b315b;
+  --white: #fffaf1;
+  --shadow-cyan: 0 0 32px rgba(200, 147, 47, 0.18);
+  --shadow-panel: 0 24px 80px rgba(51, 19, 52, 0.16);
+  color-scheme: light;
+  color: var(--loreloom-ink);
+  background: var(--loreloom-parchment);
+}
+
+.loreloom-page .site-header {
+  color: #fff8ec;
+  background: rgba(51, 19, 52, 0.84);
+  border-bottom-color: rgba(200, 147, 47, 0.22);
+}
+
+.loreloom-page .site-header.is-scrolled,
+.loreloom-page .site-header.nav-is-open {
+  background: rgba(51, 19, 52, 0.96);
+  border-bottom-color: rgba(200, 147, 47, 0.52);
+}
+
+.loreloom-page .primary-nav a {
+  color: rgba(255, 248, 236, 0.82);
+}
+
+.loreloom-page .primary-nav a:hover,
+.loreloom-page .primary-nav a:focus-visible,
+.loreloom-page .primary-nav a[aria-current="page"] {
+  color: #fffaf1;
+  background: rgba(200, 147, 47, 0.16);
+}
+
+.loreloom-page .header-cta {
+  color: var(--loreloom-plum);
+  background: var(--loreloom-gold);
+  box-shadow: 0 0 32px rgba(200, 147, 47, 0.2);
+}
+
+.loreloom-page .nav-logo-wrap-loreloom {
+  padding: 0.12rem 0.45rem;
+  background: rgba(255, 248, 236, 0.92);
+  border: 1px solid rgba(200, 147, 47, 0.36);
+}
+
+.loreloom-page .brand .nav-logo {
+  width: 194px;
+  max-width: 194px;
+  max-height: 38px;
+  object-fit: contain;
+}
+
+.loreloom-hero {
+  color: var(--loreloom-ink);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(123, 43, 125, 0.16), transparent 30rem),
+    radial-gradient(circle at 78% 26%, rgba(200, 147, 47, 0.2), transparent 28rem),
+    linear-gradient(135deg, #fffaf1 0%, var(--loreloom-parchment) 58%, #e9d2ae 100%);
+}
+
+.loreloom-hero::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(51, 19, 52, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 19, 52, 0.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+  content: "";
+  mix-blend-mode: multiply;
+}
+
+.loreloom-hero .hero-canvas {
+  opacity: 0.14;
+}
+
+.loreloom-hero .hero-grid {
+  box-shadow: inset 0 -1px 0 rgba(200, 147, 47, 0.24);
+}
+
+.loreloom-hero h1,
+.loreloom-hero .signal-list dt,
+.loreloom-page h2,
+.loreloom-page .service-card h3,
+.loreloom-page .process-list span {
+  color: var(--loreloom-ink);
+}
+
+.loreloom-hero h1,
+.loreloom-page h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.loreloom-hero .hero-lede,
+.loreloom-hero .signal-list dd,
+.loreloom-page .intro-copy,
+.loreloom-page .process-heading p:last-child,
+.loreloom-page .contact-copy {
+  color: var(--text-soft);
+}
+
+.loreloom-page .eyebrow,
+.loreloom-page .section-kicker,
+.loreloom-page .project-label {
+  color: var(--loreloom-plum-bright);
+  letter-spacing: 0.08em;
+}
+
+.loreloom-hero-inner {
+  grid-template-columns: minmax(0, 0.88fr) minmax(390px, 1.12fr);
+}
+
+.loreloom-logo-plaque {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 1.15rem;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(200, 147, 47, 0.2), transparent 13rem),
+    rgba(255, 250, 241, 0.78);
+  border: 1px solid rgba(200, 147, 47, 0.36);
+  border-radius: 8px;
+  box-shadow:
+    0 30px 90px rgba(51, 19, 52, 0.18),
+    inset 0 0 0 1px rgba(255, 250, 241, 0.64);
+}
+
+.loreloom-logo-plaque img {
+  width: min(100%, 660px);
+  filter: drop-shadow(0 18px 28px rgba(51, 19, 52, 0.22));
+}
+
+.loreloom-page .button-primary {
+  color: #fffaf1;
+  background: var(--loreloom-plum);
+  box-shadow: 0 18px 46px rgba(51, 19, 52, 0.22);
+}
+
+.loreloom-page .button-secondary {
+  color: var(--loreloom-plum);
+  border-color: rgba(200, 147, 47, 0.54);
+  background: rgba(255, 250, 241, 0.62);
+}
+
+.loreloom-page .button-secondary:hover,
+.loreloom-page .button-secondary:focus-visible {
+  border-color: rgba(123, 43, 125, 0.72);
+}
+
+.loreloom-page .signal-list div,
+.loreloom-page .service-card,
+.loreloom-page .process-list li,
+.loreloom-page .fit-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 250, 241, 0.88), rgba(246, 234, 212, 0.72)),
+    var(--panel);
+  border-color: rgba(200, 147, 47, 0.28);
+}
+
+.loreloom-page .service-card:hover {
+  border-color: rgba(123, 43, 125, 0.5);
+}
+
+.loreloom-page .service-card p,
+.loreloom-page .process-list p {
+  color: var(--muted);
+}
+
+.loreloom-page .service-icon,
+.loreloom-page .process-list li::before {
+  color: #fffaf1;
+  background: var(--loreloom-plum);
+  box-shadow: 0 0 22px rgba(51, 19, 52, 0.14);
+}
+
+.loreloom-page .service-card:nth-child(2n) .service-icon {
+  color: var(--loreloom-plum);
+  background: var(--loreloom-gold);
+  border-color: rgba(51, 19, 52, 0.24);
+}
+
+.loreloom-page .service-card:nth-child(3n) .service-icon {
+  color: #fffaf1;
+  background: var(--loreloom-plum-bright);
+}
+
+.loreloom-intro,
+.loreloom-beliefs {
+  background:
+    radial-gradient(circle at 86% 14%, rgba(200, 147, 47, 0.16), transparent 20rem),
+    linear-gradient(135deg, rgba(234, 213, 184, 0.52), rgba(246, 234, 212, 0.94)),
+    var(--loreloom-parchment);
+}
+
+.loreloom-page .services-section,
+.loreloom-page .contact-section {
+  background: #fffaf1;
+}
+
+.loreloom-process {
+  background:
+    radial-gradient(circle at 16% 20%, rgba(123, 43, 125, 0.28), transparent 26rem),
+    var(--loreloom-plum);
+}
+
+.loreloom-process h2,
+.loreloom-process .section-kicker,
+.loreloom-process .process-heading p:last-child {
+  color: var(--loreloom-parchment);
+}
+
+.loreloom-process .process-list li {
+  background: rgba(255, 250, 241, 0.96);
+}
+
+.loreloom-card-feature {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(200, 147, 47, 0.24), transparent 10rem),
+    linear-gradient(135deg, rgba(255, 250, 241, 0.95), rgba(234, 213, 184, 0.5)),
+    var(--loreloom-parchment);
+}
+
+.loreloom-beliefs-panel .fit-list li::before {
+  background: var(--loreloom-gold);
+  box-shadow: 0 0 16px rgba(200, 147, 47, 0.38);
+}
+
+.loreloom-beta .hero-actions {
+  margin-top: 1.5rem;
+}
+
+.loreloom-back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--loreloom-plum);
+}
+
+.loreloom-back-link:hover,
+.loreloom-back-link:focus-visible,
+.loreloom-page .text-link:hover,
+.loreloom-page .text-link:focus-visible {
+  color: var(--loreloom-plum-bright);
+}
+
+.loreloom-footer-layout {
+  align-items: center;
+}
+
+.loreloom-footer-layout img {
+  width: 96px;
+  height: 54px;
+  object-fit: contain;
+  padding: 0.2rem 0.3rem;
+  background: #fffaf1;
+  border: 1px solid rgba(200, 147, 47, 0.28);
+  border-radius: 8px;
+}
+
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: auto auto;
@@ -1232,6 +1549,12 @@ h2 {
     justify-content: flex-start;
   }
 
+  .loreloom-logo-plaque {
+    order: -1;
+    width: min(100%, 720px);
+    justify-content: flex-start;
+  }
+
   .hero h1 {
     font-size: 3.9rem;
   }
@@ -1272,7 +1595,8 @@ h2 {
   }
 
   .modern-relic-logo-plaque img,
-  .muse-logo-plaque img {
+  .muse-logo-plaque img,
+  .loreloom-logo-plaque img {
     max-height: 260px;
   }
 }
@@ -1331,7 +1655,8 @@ h2 {
     max-height: 220px;
   }
 
-  .muse-logo-plaque img {
+  .muse-logo-plaque img,
+  .loreloom-logo-plaque img {
     max-height: 220px;
   }
 
@@ -1339,7 +1664,8 @@ h2 {
     padding: 0.8rem;
   }
 
-  .muse-logo-plaque {
+  .muse-logo-plaque,
+  .loreloom-logo-plaque {
     padding: 0.8rem;
   }
 
@@ -1386,6 +1712,10 @@ h2 {
 
   .venture-card-media-muse img {
     max-height: 120px;
+  }
+
+  .venture-card-media-loreloom img {
+    max-height: 118px;
   }
 
   .service-card {

@@ -10,7 +10,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 1,
     duration: "3:21",
-    src: "/nullkitten/assets/audio/album-01/Boot Sequence.mp3",
+    src: "/assets/audio/album-01/Boot Sequence.mp3",
   },
   {
     title: "MEMØRY_LØ$$",

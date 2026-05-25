@@ -18,7 +18,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 2,
     duration: "6:59",
-    src: "/nullkitten/assets/audio/album-01/Memory Loss.mp3",
+    src: "/assets/audio/album-01/Memory Loss.mp3",
   },
   {
     title: "B0DY_H0RRØR.exe",
@@ -26,7 +26,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 3,
     duration: "2:48",
-    src: "/nullkitten/assets/audio/album-01/Body Horror.mp3",
+    src: "/assets/audio/album-01/Body Horror.mp3",
   },
   {
     title: ">into_analog_",
@@ -34,7 +34,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 4,
     duration: "3:45",
-    src: "/nullkitten/assets/audio/album-01/Into Analog.mp3",
+    src: "/assets/audio/album-01/Into Analog.mp3",
   },
   {
     title: "H00M4N$.tmp",
@@ -42,7 +42,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 5,
     duration: "3:12",
-    src: "/nullkitten/assets/audio/album-01/Hoomans.mp3",
+    src: "/assets/audio/album-01/Hoomans.mp3",
   },
   {
     title: "C0N$UME.dll",
@@ -50,7 +50,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 6,
     duration: "3:03",
-    src: "/nullkitten/assets/audio/album-01/Consume.mp3",
+    src: "/assets/audio/album-01/Consume.mp3",
   },
   {
     title: "PATCH_NOTES.md",
@@ -58,7 +58,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 7,
     duration: "3:26",
-    src: "/nullkitten/assets/audio/album-01/Patch Notes.mp3",
+    src: "/assets/audio/album-01/Patch Notes.mp3",
   },
   {
     title: "CØNTRABAND_PUL$E",
@@ -66,7 +66,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 8,
     duration: "3:00",
-    src: "/nullkitten/assets/audio/album-01/Contraband Pulse.mp3",
+    src: "/assets/audio/album-01/Contraband Pulse.mp3",
   },
   {
     title: "KµLT//ERR",
@@ -74,7 +74,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 9,
     duration: "3:07",
-    src: "/nullkitten/assets/audio/album-01/Kult.mp3",
+    src: "/assets/audio/album-01/Kult.mp3",
   },
 ];
 

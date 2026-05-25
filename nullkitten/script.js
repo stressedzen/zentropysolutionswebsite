@@ -13,7 +13,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 1,
     duration: "3:21",
-    src: "/nullkitten/assets/audio/album-01/Boot Sequence.mp3",
+    src: "assets/audio/album-01/Boot Sequence.mp3",
   },
   {
     id: "memory-loss",
@@ -22,7 +22,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 2,
     duration: "6:59",
-    src: "/nullkitten/assets/audio/album-01/Memory Loss.mp3",
+    src: "assets/audio/album-01/Memory Loss.mp3",
   },
   {
     id: "body-horror",
@@ -31,7 +31,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 3,
     duration: "2:48",
-    src: "/nullkitten/assets/audio/album-01/Body Horror.mp3",
+    src: "assets/audio/album-01/Body Horror.mp3",
   },
   {
     id: "into-analog",
@@ -40,7 +40,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 4,
     duration: "3:45",
-    src: "/nullkitten/assets/audio/album-01/Into Analog.mp3",
+    src: "assets/audio/album-01/Into Analog.mp3",
   },
   {
     id: "hoomans",
@@ -49,7 +49,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 5,
     duration: "3:12",
-    src: "/nullkitten/assets/audio/album-01/Hoomans.mp3",
+    src: "assets/audio/album-01/Hoomans.mp3",
   },
   {
     id: "consume",
@@ -58,7 +58,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 6,
     duration: "3:03",
-    src: "/nullkitten/assets/audio/album-01/Consume.mp3",
+    src: "assets/audio/album-01/Consume.mp3",
   },
   {
     id: "patch-notes",
@@ -67,7 +67,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 7,
     duration: "3:26",
-    src: "/nullkitten/assets/audio/album-01/Patch Notes.mp3",
+    src: "assets/audio/album-01/Patch Notes.mp3",
   },
   {
     id: "contraband-pulse",
@@ -76,7 +76,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 8,
     duration: "3:00",
-    src: "/nullkitten/assets/audio/album-01/Contraband Pulse.mp3",
+    src: "assets/audio/album-01/Contraband Pulse.mp3",
   },
   {
     id: "kult",
@@ -85,7 +85,7 @@ const tracklist = [
     album: "MEATSPACE//INIT",
     track: 9,
     duration: "3:07",
-    src: "/nullkitten/assets/audio/album-01/Kult.mp3",
+    src: "assets/audio/album-01/Kult.mp3",
   },
 ];
 

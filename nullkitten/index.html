@@ -7,7 +7,7 @@
     <title>Null.Kitten</title>
     <meta
       name="description"
-      content="Null.Kitten is a one-page stream room with music and booking links."
+      content="Null.Kitten"
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
@@ -68,21 +68,16 @@
           />
         </a>
         <div class="hero-copy">
-          <p class="eyebrow">late-night stream room</p>
+          <p class="eyebrow">Null's Digital Den</p>
           <h1 id="hero-title">Null.Kitten</h1>
-          <p class="tagline">sets, scratches, soft voltage. press play when the room is ready.</p>
-          <p class="status-line" aria-live="polite">no autoplay / stream only / booking open</p>
+          <p class="tagline">broadcasting from the edge of the grid</p>
+          <p class="status-line" aria-live="polite">/ bookings open /</p>
         </div>
       </header>
 
       <main>
-        <section class="panel player-panel" id="player" aria-labelledby="player-title">
-          <div class="section-head">
-            <p class="section-kicker">now playing</p>
-            <h2 id="player-title">private signal</h2>
-          </div>
-
-          <div class="player" data-player-shell>
+        <section class="player-panel" id="player" aria-labelledby="player-title">
+          <div class="player-skin" data-player-shell>
             <audio
               id="player-audio"
               preload="none"
@@ -90,24 +85,28 @@
               aria-label="Null.Kitten stream player"
             ></audio>
 
-            <div class="player-topline">
-              <button class="icon-button" type="button" id="play-toggle" aria-label="Play stream">
-                <span aria-hidden="true">▶</span>
-              </button>
+            <div class="skin-topbar">
+              <div>
+                <p class="section-kicker">null.kitten device</p>
+                <h2 id="player-title">MEATSPACE//INIT</h2>
+              </div>
+              <span class="track-count" id="track-count">01 / 09</span>
+            </div>
 
+            <div class="skin-display" aria-live="polite">
+              <span class="signal-light" aria-hidden="true"></span>
               <div class="track-meta">
-                <p class="track-label">current track</p>
+                <p class="track-label" id="track-album">MEATSPACE//INIT</p>
                 <p class="track-name" id="track-name">loading set...</p>
               </div>
-
-              <div class="duration-wrap" aria-label="Track duration">
-                <span class="duration-label">duration</span>
+              <div class="time-stack" aria-label="Track time">
+                <span id="current-time">0:00</span>
+                <span aria-hidden="true">/</span>
                 <output id="track-duration">--:--</output>
               </div>
             </div>
 
-            <div class="player-progress" aria-label="Playback progress">
-              <span class="progress-time" id="current-time">0:00</span>
+            <div class="skin-progress" aria-label="Playback progress">
               <div
                 class="progress-bar"
                 role="progressbar"
@@ -117,19 +116,38 @@
                 aria-valuenow="0"
               >
                 <span class="progress-fill" id="progress-fill"></span>
+                <input
+                  class="progress-range"
+                  id="progress-range"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                  aria-label="Seek playback"
+                />
               </div>
-              <span class="progress-time" id="remaining-time">--:--</span>
+              <span class="remaining-time" id="remaining-time">--:--</span>
             </div>
 
-            <div class="player-footer">
-              <p class="player-note">
-                no visible downloads, no autoplay. hit play when you’re ready.
-              </p>
-              <div class="track-switcher" aria-label="Track list">
-                <button class="text-button" type="button" id="prev-track">prev</button>
-                <span class="track-count" id="track-count">01 / 01</span>
-                <button class="text-button" type="button" id="next-track">next</button>
-              </div>
+            <div class="transport-row" aria-label="Playback controls">
+              <button class="skin-button" type="button" id="prev-track" aria-label="Previous track">
+                <span aria-hidden="true">◀◀</span>
+              </button>
+              <button class="skin-button play-button" type="button" id="play-toggle" aria-label="Play stream">
+                <span aria-hidden="true">▶</span>
+              </button>
+              <button class="skin-button" type="button" id="stop-track" aria-label="Stop playback">
+                <span aria-hidden="true">■</span>
+              </button>
+              <button class="skin-button" type="button" id="next-track" aria-label="Next track">
+                <span aria-hidden="true">▶▶</span>
+              </button>
+            </div>
+
+            <div class="playlist-panel" aria-label="Album playlist">
+              <p class="playlist-label">playlist</p>
+              <ol class="playlist" id="playlist"></ol>
             </div>
           </div>
         </section>
@@ -139,7 +157,7 @@
           <a href="https://instagram.com/null.kitten" rel="noreferrer noopener" target="_blank"
             >instagram</a
           >
-          <a href="https://soundcloud.com/" rel="noreferrer noopener" target="_blank">soundcloud</a>
+          
         </footer>
       </main>
     </div>

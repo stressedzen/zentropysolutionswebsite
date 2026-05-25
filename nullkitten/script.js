@@ -5,19 +5,76 @@ const ACCESS_ACCEPTED_MS = 920;
 
 const tracklist = [
   {
-    title: "Night Feed",
-    src: "/nullkitten/assets/audio/track-01.mp3",
-    // Replace with the real stream URL or a local file when the first track is ready.
+    title: "B00T::SEQ//",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 1,
+    duration: "3:21",
+    src: "/nullkitten/assets/audio/album-01/Boot Sequence.mp3",
   },
   {
-    title: "Static Prayer",
-    src: "/nullkitten/assets/audio/track-02.mp3",
-    // Replace with the next live stream source or a real audio file path.
+    title: "MEMØRY_LØ$$",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 2,
+    duration: "6:59",
+    src: "/nullkitten/assets/audio/album-01/Memory Loss.mp3",
   },
   {
-    title: "Afterimage Choir",
-    src: "/nullkitten/assets/audio/track-03.mp3",
-    // Replace with the actual track file or remote stream endpoint.
+    title: "B0DY_H0RRØR.exe",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 3,
+    duration: "2:48",
+    src: "/nullkitten/assets/audio/album-01/Body Horror.mp3",
+  },
+  {
+    title: ">into_analog_",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 4,
+    duration: "3:45",
+    src: "/nullkitten/assets/audio/album-01/Into Analog.mp3",
+  },
+  {
+    title: "H00M4N$.tmp",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 5,
+    duration: "3:12",
+    src: "/nullkitten/assets/audio/album-01/Hoomans.mp3",
+  },
+  {
+    title: "C0N$UME.dll",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 6,
+    duration: "3:03",
+    src: "/nullkitten/assets/audio/album-01/Consume.mp3",
+  },
+  {
+    title: "PATCH_NOTES.md",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 7,
+    duration: "3:26",
+    src: "/nullkitten/assets/audio/album-01/Patch Notes.mp3",
+  },
+  {
+    title: "CØNTRABAND_PUL$E",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 8,
+    duration: "3:00",
+    src: "/nullkitten/assets/audio/album-01/Contraband Pulse.mp3",
+  },
+  {
+    title: "KµLT//ERR",
+    artist: "Null.Kitten",
+    album: "MEATSPACE//INIT",
+    track: 9,
+    duration: "3:07",
+    src: "/nullkitten/assets/audio/album-01/Kult.mp3",
   },
 ];
 
@@ -25,13 +82,17 @@ const audio = document.getElementById("player-audio");
 const playToggle = document.getElementById("play-toggle");
 const prevTrack = document.getElementById("prev-track");
 const nextTrack = document.getElementById("next-track");
+const stopTrack = document.getElementById("stop-track");
 const trackName = document.getElementById("track-name");
+const trackAlbum = document.getElementById("track-album");
 const trackDuration = document.getElementById("track-duration");
 const currentTime = document.getElementById("current-time");
 const remainingTime = document.getElementById("remaining-time");
 const progressFill = document.getElementById("progress-fill");
+const progressRange = document.getElementById("progress-range");
 const trackCount = document.getElementById("track-count");
 const playerShell = document.querySelector("[data-player-shell]");
+const playlist = document.getElementById("playlist");
 const accessGate = document.getElementById("access-gate");
 const accessForm = document.getElementById("access-form");
 const accessCode = document.getElementById("access-code");
@@ -40,6 +101,7 @@ const accessStatus = document.getElementById("access-status");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let activeTrackIndex = 0;
+let isSeeking = false;
 
 function clearGateState() {
   document.body.classList.remove(
@@ -136,6 +198,54 @@ function updateTrackCount() {
   trackCount.textContent = `${current} / ${total}`;
 }
 
+function renderPlaylist() {
+  playlist.innerHTML = "";
+
+  tracklist.forEach((track, index) => {
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    const trackNumber = document.createElement("span");
+    const title = document.createElement("span");
+    const duration = document.createElement("span");
+
+    button.className = "playlist-track";
+    button.type = "button";
+    button.dataset.trackIndex = String(index);
+    button.setAttribute("aria-label", `Play ${track.title}`);
+
+    trackNumber.className = "playlist-number";
+    trackNumber.textContent = String(track.track || index + 1).padStart(2, "0");
+
+    title.className = "playlist-title";
+    title.textContent = track.title;
+
+    duration.className = "playlist-duration";
+    duration.textContent = track.duration || "--:--";
+
+    button.append(trackNumber, title, duration);
+    item.append(button);
+    playlist.append(item);
+  });
+}
+
+function updatePlaylistState() {
+  playlist.querySelectorAll(".playlist-track").forEach((button, index) => {
+    const isActive = index === activeTrackIndex;
+    button.classList.toggle("is-active", isActive);
+    button.toggleAttribute("aria-current", isActive);
+  });
+}
+
+function setPlaybackButton(isPlaying) {
+  const track = tracklist[activeTrackIndex];
+  playToggle.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${track.title}`);
+  playToggle.innerHTML = isPlaying
+    ? "<span aria-hidden=\"true\">▌▌</span>"
+    : "<span aria-hidden=\"true\">▶</span>";
+  playerShell.classList.toggle("is-playing", isPlaying);
+  updatePlaylistState();
+}
+
 function loadTrack(index, shouldPlay = false) {
   activeTrackIndex = (index + tracklist.length) % tracklist.length;
   const track = tracklist[activeTrackIndex];
@@ -143,14 +253,17 @@ function loadTrack(index, shouldPlay = false) {
   audio.src = track.src;
   audio.load();
   trackName.textContent = track.title;
-  trackDuration.textContent = "--:--";
+  trackAlbum.textContent = track.album || "MEATSPACE//INIT";
+  trackDuration.textContent = track.duration || "--:--";
   currentTime.textContent = "0:00";
   remainingTime.textContent = "--:--";
   progressFill.style.width = "0%";
+  progressRange.value = "0";
   progressFill.parentElement.setAttribute("aria-valuenow", "0");
-  playToggle.setAttribute("aria-label", `Play ${track.title}`);
-  playToggle.innerHTML = "<span aria-hidden=\"true\">▶</span>";
+  progressRange.setAttribute("aria-valuenow", "0");
+  setPlaybackButton(false);
   updateTrackCount();
+  updatePlaylistState();
 
   if (shouldPlay) {
     void audio.play().catch(() => {
@@ -170,6 +283,11 @@ function syncProgress() {
   remainingTime.textContent = hasDuration ? formatTime(Math.max(duration - time, 0)) : "--:--";
   progressFill.style.width = `${percent}%`;
   progressFill.parentElement.setAttribute("aria-valuenow", String(Math.round(percent)));
+  progressRange.setAttribute("aria-valuenow", String(Math.round(percent)));
+
+  if (!isSeeking) {
+    progressRange.value = String(percent);
+  }
 }
 
 function togglePlayback() {
@@ -183,15 +301,38 @@ function togglePlayback() {
 playToggle.addEventListener("click", togglePlayback);
 prevTrack.addEventListener("click", () => loadTrack(activeTrackIndex - 1, true));
 nextTrack.addEventListener("click", () => loadTrack(activeTrackIndex + 1, true));
+stopTrack.addEventListener("click", () => {
+  audio.pause();
+  audio.currentTime = 0;
+  syncProgress();
+});
+
+progressRange.addEventListener("input", () => {
+  isSeeking = true;
+  progressFill.style.width = `${progressRange.value}%`;
+});
+
+progressRange.addEventListener("change", () => {
+  const duration = audio.duration;
+  if (Number.isFinite(duration) && duration > 0) {
+    audio.currentTime = (Number(progressRange.value) / 100) * duration;
+  }
+  isSeeking = false;
+  syncProgress();
+});
+
+playlist.addEventListener("click", (event) => {
+  const button = event.target.closest(".playlist-track");
+  if (!button) return;
+  loadTrack(Number(button.dataset.trackIndex), true);
+});
 
 audio.addEventListener("play", () => {
-  playToggle.setAttribute("aria-label", `Pause ${tracklist[activeTrackIndex].title}`);
-  playToggle.innerHTML = "<span aria-hidden=\"true\">❚❚</span>";
+  setPlaybackButton(true);
 });
 
 audio.addEventListener("pause", () => {
-  playToggle.setAttribute("aria-label", `Play ${tracklist[activeTrackIndex].title}`);
-  playToggle.innerHTML = "<span aria-hidden=\"true\">▶</span>";
+  setPlaybackButton(false);
 });
 
 audio.addEventListener("timeupdate", syncProgress);
@@ -204,7 +345,9 @@ audio.addEventListener("error", () => {
   remainingTime.textContent = "--:--";
   trackName.textContent = `${tracklist[activeTrackIndex].title} - audio missing`;
   progressFill.style.width = "0%";
+  progressRange.value = "0";
   progressFill.parentElement.setAttribute("aria-valuenow", "0");
+  progressRange.setAttribute("aria-valuenow", "0");
 });
 
 playerShell.addEventListener("contextmenu", (event) => {
@@ -220,4 +363,5 @@ if (localStorage.getItem(ACCESS_STORAGE_KEY) === "1") {
   window.setTimeout(setGateReady, reducedMotion.matches ? 0 : ACCESS_TUNING_MS);
 }
 
+renderPlaylist();
 loadTrack(0, false);

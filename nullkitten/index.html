@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Null.Kitten</title>
+    <meta
+      name="description"
+      content="Null.Kitten is a one-page stream room with music and booking links."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body class="is-locked gate-tuning">
+    <section
+      class="access-gate"
+      id="access-gate"
+      aria-labelledby="access-title"
+      aria-describedby="access-help"
+    >
+      <form class="access-card" id="access-form" autocomplete="off">
+        <img
+          class="access-wordmark"
+          src="./assets/nullkitten-wordmark.png"
+          alt="Null.Kitten"
+          width="1041"
+          height="231"
+          decoding="async"
+        />
+        <h2 id="access-title">enter access code</h2>
+        <p id="access-help">signal required</p>
+        <label class="sr-only" for="access-code">Access code</label>
+        <input
+          id="access-code"
+          name="access-code"
+          type="password"
+          inputmode="text"
+          spellcheck="false"
+          autocapitalize="none"
+          autocomplete="one-time-code"
+          autofocus
+        />
+        <button class="access-submit" type="submit">enter</button>
+        <p class="access-status" id="access-status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <img
+      class="ambient-face"
+      src="./assets/nullkitten-face.png"
+      alt=""
+      aria-hidden="true"
+      width="822"
+      height="796"
+      decoding="async"
+    />
+    <div class="shell" id="top">
+      <header class="hero" aria-labelledby="hero-title">
+        <a class="brand-wordmark" href="#top" aria-label="Null.Kitten home">
+          <img
+            src="./assets/nullkitten-wordmark.png"
+            alt="Null.Kitten"
+            width="1041"
+            height="231"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </a>
+        <div class="hero-copy">
+          <p class="eyebrow">late-night stream room</p>
+          <h1 id="hero-title">Null.Kitten</h1>
+          <p class="tagline">sets, scratches, soft voltage. press play when the room is ready.</p>
+          <p class="status-line" aria-live="polite">no autoplay / stream only / booking open</p>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel player-panel" id="player" aria-labelledby="player-title">
+          <div class="section-head">
+            <p class="section-kicker">now playing</p>
+            <h2 id="player-title">private signal</h2>
+          </div>
+
+          <div class="player" data-player-shell>
+            <audio
+              id="player-audio"
+              preload="none"
+              controlsList="nodownload"
+              aria-label="Null.Kitten stream player"
+            ></audio>
+
+            <div class="player-topline">
+              <button class="icon-button" type="button" id="play-toggle" aria-label="Play stream">
+                <span aria-hidden="true">▶</span>
+              </button>
+
+              <div class="track-meta">
+                <p class="track-label">current track</p>
+                <p class="track-name" id="track-name">loading set...</p>
+              </div>
+
+              <div class="duration-wrap" aria-label="Track duration">
+                <span class="duration-label">duration</span>
+                <output id="track-duration">--:--</output>
+              </div>
+            </div>
+
+            <div class="player-progress" aria-label="Playback progress">
+              <span class="progress-time" id="current-time">0:00</span>
+              <div
+                class="progress-bar"
+                role="progressbar"
+                aria-label="Playback progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <span class="progress-fill" id="progress-fill"></span>
+              </div>
+              <span class="progress-time" id="remaining-time">--:--</span>
+            </div>
+
+            <div class="player-footer">
+              <p class="player-note">
+                no visible downloads, no autoplay. hit play when you’re ready.
+              </p>
+              <div class="track-switcher" aria-label="Track list">
+                <button class="text-button" type="button" id="prev-track">prev</button>
+                <span class="track-count" id="track-count">01 / 01</span>
+                <button class="text-button" type="button" id="next-track">next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer" aria-label="Null.Kitten contact links">
+          <a href="mailto:booking@nullkitten.com">booking@nullkitten.com</a>
+          <a href="https://instagram.com/null.kitten" rel="noreferrer noopener" target="_blank"
+            >instagram</a
+          >
+          <a href="https://soundcloud.com/" rel="noreferrer noopener" target="_blank">soundcloud</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

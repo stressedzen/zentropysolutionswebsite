@@ -503,6 +503,16 @@ main {
   font-size: 0.9rem;
 }
 
+.transmission-line {
+  color: var(--bone);
+}
+
+.lockout-heading {
+  padding-top: 0.55rem;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
 .text-link {
   display: inline-block;
   margin-top: 0.8rem;
@@ -512,10 +522,6 @@ main {
 .gig-time {
   color: var(--bone);
   font-variant-numeric: tabular-nums;
-}
-
-.gig-note {
-  color: var(--magenta);
 }
 
 .player-panel {

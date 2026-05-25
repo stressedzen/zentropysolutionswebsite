@@ -12,40 +12,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
   </head>
-  <body class="is-locked gate-tuning">
-    <section
-      class="access-gate"
-      id="access-gate"
-      aria-labelledby="access-title"
-      aria-describedby="access-help"
-    >
-      <form class="access-card" id="access-form" autocomplete="off">
-        <img
-          class="access-wordmark"
-          src="./assets/nullkitten-wordmark.png"
-          alt="Null.Kitten"
-          width="1041"
-          height="231"
-          decoding="async"
-        />
-        <h2 id="access-title">enter access code</h2>
-        <p id="access-help">signal required</p>
-        <label class="sr-only" for="access-code">Access code</label>
-        <input
-          id="access-code"
-          name="access-code"
-          type="password"
-          inputmode="text"
-          spellcheck="false"
-          autocapitalize="none"
-          autocomplete="one-time-code"
-          autofocus
-        />
-        <button class="access-submit" type="submit">enter</button>
-        <p class="access-status" id="access-status" aria-live="polite"></p>
-      </form>
-    </section>
-
+  <body class="player-locked">
     <img
       class="ambient-face"
       src="./assets/nullkitten-face.png"
@@ -76,7 +43,60 @@
       </header>
 
       <main>
+        <section class="transmission-panel" aria-labelledby="transmission-title">
+          <p class="section-kicker">transmission</p>
+          <h2 id="transmission-title">private signal, public doorway.</h2>
+          <p>
+            Null.Kitten is a late-room set, a hand-marked signal, a small machine for bodies
+            that still want the lights to feel personal.
+          </p>
+          <p>
+            The stream stays tucked behind a code passed in person. Booking stays open.
+          </p>
+          <a class="text-link" href="mailto:booking@nullkitten.com">booking@nullkitten.com</a>
+        </section>
+
+        <section class="gig-panel" aria-labelledby="gigs-title">
+          <p class="section-kicker">next signal</p>
+          <h2 id="gigs-title">Moon Cafe / Perth</h2>
+          <p class="gig-time">Friday 5th / 10:00pm</p>
+          <p class="gig-note">stream code passed IRL.</p>
+        </section>
+
         <section class="player-panel" id="player" aria-labelledby="player-title">
+          <section
+            class="access-gate"
+            id="access-gate"
+            aria-labelledby="access-title"
+            aria-describedby="access-help"
+          >
+            <form class="access-card" id="access-form" autocomplete="off">
+              <img
+                class="access-wordmark"
+                src="./assets/nullkitten-wordmark.png"
+                alt="Null.Kitten"
+                width="1041"
+                height="231"
+                decoding="async"
+              />
+              <p class="section-kicker">stream locked</p>
+              <h2 id="access-title">enter code</h2>
+              <p id="access-help">signal required</p>
+              <label class="sr-only" for="access-code">Access code</label>
+              <input
+                id="access-code"
+                name="access-code"
+                type="password"
+                inputmode="text"
+                spellcheck="false"
+                autocapitalize="none"
+                autocomplete="one-time-code"
+              />
+              <button class="access-submit" type="submit">unlock stream</button>
+              <p class="access-status" id="access-status" aria-live="polite"></p>
+            </form>
+          </section>
+
           <div class="player-skin" data-player-shell>
             <audio
               id="player-audio"

@@ -7,12 +7,12 @@
     <title>Null.Kitten</title>
     <meta
       name="description"
-      content="Null.Kitten"
+      content="Null.Kitten — visual artist and event technician working across lights, screens, sound, and strange little systems."
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./script.js"></script>
   </head>
-  <body class="player-locked">
+  <body>
     <img
       class="ambient-face"
       src="./assets/nullkitten-face.png"
@@ -37,15 +37,78 @@
         <div class="hero-copy">
           <p class="eyebrow">Null's Digital Den</p>
           <h1 id="hero-title">Null.Kitten</h1>
-          <p class="tagline">/ broadcasting from the edge of the grid /</p>
+          <p class="tagline">/ lights, screens, sound, and strange little systems /</p>
           <p class="status-line" aria-live="polite">/ bookings open /</p>
         </div>
       </header>
 
       <main>
-        <section class="transmission-panel" aria-labelledby="transmission-title">
-          <h2 class="sr-only" id="transmission-title">Databass transmission</h2>
-          <pre class="transmission-console" aria-label="Databass transmission"><code>&gt; INITIALIZING TRANSMISSION...
+        <section class="persona-bio" aria-labelledby="bio-title">
+          <p class="section-kicker">who is this</p>
+          <h2 id="bio-title">Null.Kitten</h2>
+          <p>
+            Null.Kitten is a visual artist and event technician working across
+            lights, screens, sound, and strange little systems. The project grew
+            out of performance spaces &mdash; VJ work, lighting, live tech, and the
+            soft chaos behind a room coming alive.
+          </p>
+          <p>
+            The music is part of the same machine: self-written, self-built, and
+            tuned for late rooms, damaged signals, and people who like their
+            technology with fingerprints on it.
+          </p>
+        </section>
+
+        <section class="panel-stack" aria-label="What Null.Kitten does">
+          <details class="panel-collapse" open>
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">VISUALS / VJ</span>
+            </summary>
+            <div class="panel-body">
+              <p>
+                Live visuals built in real time &mdash; feeds, loops, and generated
+                imagery pushed to screens and walls. The set reacts to the room:
+                whatever the music does, the picture answers.
+              </p>
+            </div>
+          </details>
+
+          <details class="panel-collapse">
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">EVENT TECH</span>
+            </summary>
+            <div class="panel-body">
+              <p>
+                The practical side of making a night happen &mdash; patching,
+                rigging, signal flow, and the quiet problem-solving that keeps a
+                show running. Comfortable in the dark behind the desk.
+              </p>
+            </div>
+          </details>
+
+          <details class="panel-collapse">
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">LIGHTING</span>
+            </summary>
+            <div class="panel-body">
+              <p>
+                Lighting design and operation for performances and rooms.
+                Programming fixtures, shaping mood, and reading a crowd through
+                what they can and can&rsquo;t quite see.
+              </p>
+            </div>
+          </details>
+
+          <details class="panel-collapse">
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">MUSIC / DATABASS</span>
+            </summary>
+            <div class="panel-body">
+              <pre class="transmission-console" aria-label="Databass transmission"><code>&gt; INITIALIZING TRANSMISSION...
 
 :: DATABASS ::
 
@@ -57,67 +120,46 @@ Human music.
 Recompiled for new systems.
 
 
-[ LOCKOUT NOTICE ]
-
-Certain releases, archives, and transmission
-channels may remain locked.
-
-This system is designed to encourage direct
-interaction outside standard social media feeds,
-recommendation systems, and passive consumption
-loops.
-
-If access is unavailable through normal
-channels, contact Null.Kitten directly to
-initiate transmission and receive an access code.
-
-
 &gt; SIGNAL_STATUS ........ ONLINE
 &gt; LINK_STATE ........... STABLE
 &gt; ENTITY_NODE .......... NULL.KITTEN
 &gt; END_TRANSMISSION</code></pre>
-        </section>
+            </div>
+          </details>
 
-        <section class="gig-panel" aria-labelledby="gigs-title">
-          <p class="section-kicker">next signal</p>
-          <h2 id="gigs-title">Moon Cafe / Perth</h2>
-          <p class="gig-time">Friday 5th / 10:00pm</p>
+          <details class="panel-collapse">
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">TECH TINKERING</span>
+            </summary>
+            <div class="panel-body">
+              <p>
+                Small machines, modified gear, and strange little systems built
+                for one purpose and then repurposed for the next. Hardware kept
+                close, half-finished, and a little bit feral.
+              </p>
+            </div>
+          </details>
+
+          <details class="panel-collapse">
+            <summary>
+              <span class="panel-marker" aria-hidden="true"></span>
+              <span class="panel-heading">BOOKING / COLLABORATION</span>
+            </summary>
+            <div class="panel-body">
+              <p>
+                Open to shows, installations, visual sets, and odd collaborative
+                experiments. Reach out directly &mdash; the good stuff usually
+                starts with a conversation.
+              </p>
+              <p class="panel-links">
+                <a href="mailto:booking@nullkitten.com">booking@nullkitten.com</a>
+              </p>
+            </div>
+          </details>
         </section>
 
         <section class="player-panel" id="player" aria-labelledby="player-title">
-          <section
-            class="access-gate"
-            id="access-gate"
-            aria-labelledby="access-title"
-            aria-describedby="access-help"
-          >
-            <form class="access-card" id="access-form" autocomplete="off">
-              <img
-                class="access-wordmark"
-                src="./assets/nullkitten-wordmark.png"
-                alt="Null.Kitten"
-                width="1041"
-                height="231"
-                decoding="async"
-              />
-              <p class="section-kicker">stream locked</p>
-              <h2 id="access-title">enter code</h2>
-              <p id="access-help">signal required</p>
-              <label class="sr-only" for="access-code">Access code</label>
-              <input
-                id="access-code"
-                name="access-code"
-                type="password"
-                inputmode="text"
-                spellcheck="false"
-                autocapitalize="none"
-                autocomplete="one-time-code"
-              />
-              <button class="access-submit" type="submit">unlock stream</button>
-              <p class="access-status" id="access-status" aria-live="polite"></p>
-            </form>
-          </section>
-
           <div class="player-skin" data-player-shell>
             <audio
               id="player-audio"
@@ -193,12 +235,17 @@ initiate transmission and receive an access code.
           </div>
         </section>
 
+        <section class="gig-panel" aria-labelledby="gigs-title">
+          <p class="section-kicker">next signal</p>
+          <h2 id="gigs-title">Moon Cafe / Perth</h2>
+          <p class="gig-time">Friday 5th / 10:00pm</p>
+        </section>
+
         <footer class="site-footer" aria-label="Null.Kitten contact links">
           <a href="mailto:booking@nullkitten.com">booking@nullkitten.com</a>
           <a href="https://instagram.com/null.kitten" rel="noreferrer noopener" target="_blank"
             >instagram</a
           >
-          
         </footer>
       </main>
     </div>

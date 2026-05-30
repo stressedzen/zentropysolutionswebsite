@@ -1,7 +1,3 @@
-const ACCESS_HASH = "e3ef88fc71ec1d6bd1e74c5ae3e4606d1978cb03c10b8b630446738b9e09772e";
-const ACCESS_STORAGE_KEY = "nullkitten:unlocked";
-const ACCESS_TUNING_MS = 1900;
-const ACCESS_ACCEPTED_MS = 920;
 const TRACK_COUNTER_URL = "./track-counter.php";
 const PLAY_COUNT_THRESHOLD_SECONDS = 10;
 
@@ -104,12 +100,6 @@ const progressRange = document.getElementById("progress-range");
 const trackCount = document.getElementById("track-count");
 const playerShell = document.querySelector("[data-player-shell]");
 const playlist = document.getElementById("playlist");
-const accessGate = document.getElementById("access-gate");
-const accessForm = document.getElementById("access-form");
-const accessCode = document.getElementById("access-code");
-const accessSubmit = document.querySelector(".access-submit");
-const accessStatus = document.getElementById("access-status");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let activeTrackIndex = 0;
 let isSeeking = false;
@@ -121,88 +111,6 @@ let listenSeconds = 0;
 let lastPlaybackSample = 0;
 let playCountRecorded = false;
 let activeCountTrackId = null;
-
-function clearGateState() {
-  document.body.classList.remove(
-    "gate-tuning",
-    "gate-ready",
-    "gate-error",
-    "gate-rejected",
-    "gate-accepted",
-  );
-}
-
-function setGateReady() {
-  document.body.classList.remove("gate-tuning", "gate-error");
-  document.body.classList.add("gate-ready");
-  accessCode.disabled = false;
-  accessSubmit.disabled = false;
-}
-
-function unlockSite({ skipMessage = false, immediate = false } = {}) {
-  clearGateState();
-  document.body.classList.remove("player-locked");
-  document.body.classList.add("player-unlocked");
-
-  if (!skipMessage) {
-    accessStatus.textContent = "signal accepted";
-  }
-
-  window.setTimeout(() => {
-    accessGate.setAttribute("aria-hidden", "true");
-  }, immediate ? 0 : 560);
-
-  maybeLoadPlayCounts();
-}
-
-async function sha256Hex(value) {
-  const bytes = new TextEncoder().encode(value);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-
-  return [...new Uint8Array(digest)]
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-function rejectAccess() {
-  accessStatus.textContent = "signal rejected";
-  document.body.classList.remove("gate-error");
-  accessForm.classList.remove("is-rejected");
-  void accessForm.offsetWidth;
-  document.body.classList.add("gate-error", "gate-rejected");
-  accessForm.classList.add("is-rejected");
-  accessCode.value = "";
-  accessCode.focus();
-
-  window.setTimeout(() => {
-    document.body.classList.remove("gate-error");
-    accessForm.classList.remove("is-rejected");
-  }, reducedMotion.matches ? 0 : 540);
-}
-
-async function handleAccessSubmit(event) {
-  event.preventDefault();
-
-  const normalizedCode = accessCode.value.trim().toLowerCase();
-  const inputHash = await sha256Hex(normalizedCode);
-
-  if (inputHash === ACCESS_HASH) {
-    localStorage.setItem(ACCESS_STORAGE_KEY, "1");
-    accessCode.disabled = true;
-    accessSubmit.disabled = true;
-    accessStatus.textContent = "signal accepted";
-    document.body.classList.remove("gate-ready", "gate-error", "gate-rejected");
-    document.body.classList.add("gate-accepted");
-
-    window.setTimeout(
-      () => unlockSite({ skipMessage: true, immediate: reducedMotion.matches }),
-      reducedMotion.matches ? 0 : ACCESS_ACCEPTED_MS,
-    );
-    return;
-  }
-
-  rejectAccess();
-}
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
@@ -284,7 +192,7 @@ async function loadPlayCounts() {
 }
 
 function maybeLoadPlayCounts() {
-  if (!document.body.classList.contains("player-unlocked") || !playlist.childElementCount) {
+  if (!playlist.childElementCount) {
     return;
   }
 
@@ -545,16 +453,6 @@ audio.addEventListener("error", () => {
 playerShell.addEventListener("contextmenu", (event) => {
   event.preventDefault();
 });
-
-if (localStorage.getItem(ACCESS_STORAGE_KEY) === "1") {
-  unlockSite({ skipMessage: true, immediate: true });
-} else {
-  accessForm.addEventListener("submit", handleAccessSubmit);
-  document.body.classList.add("gate-tuning");
-  accessCode.disabled = true;
-  accessSubmit.disabled = true;
-  window.setTimeout(setGateReady, reducedMotion.matches ? 0 : ACCESS_TUNING_MS);
-}
 
 renderPlaylist();
 loadTrack(0, false);

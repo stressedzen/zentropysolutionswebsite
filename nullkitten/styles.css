@@ -460,11 +460,22 @@ main {
   min-width: 0;
 }
 
+.gigs-title {
+  margin: 0 0 0.1rem;
+  color: var(--bone);
+  font-size: clamp(1.05rem, 4vw, 1.45rem);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-shadow:
+    -0.06rem 0 rgba(45, 228, 255, 0.5),
+    0.06rem 0 rgba(255, 45, 156, 0.45);
+}
+
 .gig-row {
   display: flex;
   gap: 1.5rem;
-  margin-top: 0.4rem;
-  padding: 0.5rem 0 0.6rem;
+  margin: 0.4rem -0.8rem 0;
+  padding: 0.55rem 0.8rem 0.65rem;
   overflow-x: auto;
   scrollbar-color: rgba(45, 228, 255, 0.38) rgba(10, 10, 15, 0.45);
 }

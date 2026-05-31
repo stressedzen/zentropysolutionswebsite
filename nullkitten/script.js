@@ -471,6 +471,14 @@ maybeLoadPlayCounts();
   const nextBtn = document.getElementById("log-next");
   const total = String(entries.length).padStart(2, "0");
 
+  // A single entry has nothing to navigate — drop the controls.
+  if (entries.length <= 1) {
+    if (countEl) countEl.textContent = `01 / ${total}`;
+    const transport = viewport.parentElement.querySelector(".log-transport");
+    if (transport) transport.remove();
+    return;
+  }
+
   function currentIndex() {
     const width = viewport.clientWidth || 1;
     return Math.max(0, Math.min(entries.length - 1, Math.round(viewport.scrollLeft / width)));

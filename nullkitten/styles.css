@@ -292,13 +292,6 @@ h1 {
   white-space: nowrap;
 }
 
-.tagline {
-  max-width: 31rem;
-  margin: 0.65rem auto 0;
-  color: rgba(232, 230, 227, 0.9);
-  font-size: 0.98rem;
-}
-
 .status-line {
   margin-top: 0.8rem;
   color: var(--cyan);
@@ -765,6 +758,90 @@ main {
 
 .playlist-track.is-active .playlist-count {
   color: rgba(45, 228, 255, 0.78);
+}
+
+.log-panel {
+  position: relative;
+}
+
+.log-skin {
+  user-select: text;
+}
+
+.log-viewport {
+  display: flex;
+  min-width: 0;
+  height: clamp(12rem, 46vw, 16rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  border: 1px solid rgba(45, 228, 255, 0.22);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 45, 156, 0.13), transparent 46%),
+    linear-gradient(180deg, rgba(45, 228, 255, 0.07), rgba(0, 0, 0, 0.16)),
+    rgba(6, 8, 11, 0.84);
+  box-shadow:
+    inset 0 0 1.8rem rgba(0, 0, 0, 0.64),
+    inset 0 1px 0 rgba(232, 230, 227, 0.14),
+    0 0 1.3rem rgba(45, 228, 255, 0.08);
+  scrollbar-color: rgba(45, 228, 255, 0.38) rgba(10, 10, 15, 0.45);
+}
+
+.log-viewport:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.log-entry {
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: clamp(0.85rem, 3vw, 1.2rem);
+  scrollbar-color: rgba(45, 228, 255, 0.3) transparent;
+}
+
+.log-date {
+  margin: 0;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.log-entry-title {
+  margin: 0;
+  color: rgba(232, 230, 227, 0.96);
+  font-size: clamp(1.05rem, 3.8vw, 1.4rem);
+  font-weight: 700;
+  text-shadow:
+    -0.08rem 0 rgba(45, 228, 255, 0.28),
+    0.08rem 0 rgba(255, 45, 156, 0.22);
+}
+
+.log-body {
+  margin-top: 0.15rem;
+}
+
+.log-body p {
+  max-width: 40rem;
+  margin: 0 0 0.6rem;
+  color: rgba(232, 230, 227, 0.84);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.log-body p:last-child {
+  margin-bottom: 0;
+}
+
+.log-transport {
+  justify-content: space-between;
 }
 
 .site-footer {

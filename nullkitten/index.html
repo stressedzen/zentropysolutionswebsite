@@ -37,7 +37,6 @@
         <div class="hero-copy">
           <p class="eyebrow">Null's Digital Den</p>
           <h1 id="hero-title">Null.Kitten</h1>
-          <p class="tagline">/ lights, screens, sound, and strange little systems /</p>
           <p class="status-line" aria-live="polite">/ bookings open /</p>
         </div>
       </header>
@@ -258,6 +257,83 @@ Recompiled for new systems.
             <div class="playlist-panel" aria-label="Album playlist">
               <p class="playlist-label">playlist</p>
               <ol class="playlist" id="playlist"></ol>
+            </div>
+          </div>
+        </section>
+
+        <section class="log-panel" id="log" aria-labelledby="log-title">
+          <div class="player-skin log-skin">
+            <div class="skin-topbar">
+              <div>
+                <p class="section-kicker">null.kitten log</p>
+                <h2 id="log-title">FIELD NOTES</h2>
+              </div>
+              <span class="track-count" id="log-count">01 / 03</span>
+            </div>
+
+            <div
+              class="log-viewport"
+              id="log-viewport"
+              tabindex="0"
+              role="group"
+              aria-label="Log entries — scroll sideways or use the controls to move between entries"
+            >
+              <article class="log-entry" aria-labelledby="log-entry-1-title">
+                <p class="log-date">2026.05.28</p>
+                <h3 class="log-entry-title" id="log-entry-1-title">ROOM TONE</h3>
+                <div class="log-body">
+                  <p>
+                    Loaded in before doors, patched the rig, and let the room sit
+                    empty for a while. There&rsquo;s a sound a space makes before
+                    anyone arrives &mdash; the hum of the building, the lights
+                    settling. I like to tune to that first.
+                  </p>
+                  <p>
+                    By the second set the screens were answering the bass on their
+                    own. Soft chaos, the good kind.
+                  </p>
+                </div>
+              </article>
+
+              <article class="log-entry" aria-labelledby="log-entry-2-title">
+                <p class="log-date">2026.04.15</p>
+                <h3 class="log-entry-title" id="log-entry-2-title">PATCH NOTES</h3>
+                <div class="log-body">
+                  <p>
+                    Spent the week elbow-deep in a half-dead controller. Rewired it
+                    for one purpose, then immediately repurposed it for the next.
+                    Hardware kept close, a little bit feral.
+                  </p>
+                  <p>
+                    Everything here is self-built and slightly broken on purpose.
+                    Fingerprints stay on.
+                  </p>
+                </div>
+              </article>
+
+              <article class="log-entry" aria-labelledby="log-entry-3-title">
+                <p class="log-date">2026.03.02</p>
+                <h3 class="log-entry-title" id="log-entry-3-title">FIRST LIGHT</h3>
+                <div class="log-body">
+                  <p>
+                    Null.Kitten started as a pile of cables and a stubborn idea:
+                    that the picture and the sound should come from the same machine.
+                    Damaged signals, recompiled for new systems.
+                  </p>
+                  <p>
+                    Still figuring it out in public. That&rsquo;s the point.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="transport-row log-transport" aria-label="Entry navigation">
+              <button class="skin-button" type="button" id="log-prev" aria-label="Previous entry">
+                <span aria-hidden="true">&#9664;&#9664;</span>
+              </button>
+              <button class="skin-button" type="button" id="log-next" aria-label="Next entry">
+                <span aria-hidden="true">&#9654;&#9654;</span>
+              </button>
             </div>
           </div>
         </section>

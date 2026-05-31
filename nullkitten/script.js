@@ -457,3 +457,56 @@ playerShell.addEventListener("contextmenu", (event) => {
 renderPlaylist();
 loadTrack(0, false);
 maybeLoadPlayCounts();
+
+/* ---- null.kitten log: horizontal entry viewer ---- */
+(function initLog() {
+  const viewport = document.getElementById("log-viewport");
+  if (!viewport) return;
+
+  const entries = Array.from(viewport.querySelectorAll(".log-entry"));
+  if (!entries.length) return;
+
+  const countEl = document.getElementById("log-count");
+  const prevBtn = document.getElementById("log-prev");
+  const nextBtn = document.getElementById("log-next");
+  const total = String(entries.length).padStart(2, "0");
+
+  function currentIndex() {
+    const width = viewport.clientWidth || 1;
+    return Math.max(0, Math.min(entries.length - 1, Math.round(viewport.scrollLeft / width)));
+  }
+
+  function update() {
+    const index = currentIndex();
+    if (countEl) {
+      countEl.textContent = `${String(index + 1).padStart(2, "0")} / ${total}`;
+    }
+    if (prevBtn) prevBtn.disabled = index <= 0;
+    if (nextBtn) nextBtn.disabled = index >= entries.length - 1;
+  }
+
+  function goTo(index) {
+    const target = Math.max(0, Math.min(entries.length - 1, index));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    viewport.scrollTo({
+      left: target * viewport.clientWidth,
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(currentIndex() - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(currentIndex() + 1));
+
+  let raf = null;
+  viewport.addEventListener(
+    "scroll",
+    () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", update);
+  update();
+})();

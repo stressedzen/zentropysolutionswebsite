@@ -416,10 +416,15 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
+.gigs {
+  min-width: 0;
+}
+
 .gig-row {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
   margin-top: 0.6rem;
+  padding-bottom: 0.4rem;
   overflow-x: auto;
   scrollbar-color: rgba(45, 228, 255, 0.38) rgba(10, 10, 15, 0.45);
 }

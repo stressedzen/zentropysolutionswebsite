@@ -340,7 +340,7 @@ main {
 }
 
 .transmission-panel,
-.gigs-section {
+.gig-panel {
   position: relative;
   padding: clamp(1rem, 3.5vw, 1.45rem);
   border: 1px solid rgba(232, 230, 227, 0.12);
@@ -373,13 +373,15 @@ main {
   pointer-events: none;
 }
 
-.transmission-panel h2 {
+.transmission-panel h2,
+.gig-panel h2 {
   margin: 0.25rem 0 0;
   color: rgba(232, 230, 227, 0.96);
   font-size: clamp(1rem, 3.6vw, 1.35rem);
 }
 
-.transmission-panel p {
+.transmission-panel p,
+.gig-panel p {
   max-width: 36rem;
   margin: 0.75rem 0 0;
   color: rgba(232, 230, 227, 0.82);
@@ -409,69 +411,22 @@ main {
   color: var(--cyan);
 }
 
-.gig-scroll-track {
-  display: flex;
-  flex-direction: row;
-  gap: 0.65rem;
-  margin-top: 0.9rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 0.5rem;
-  scrollbar-color: rgba(45, 228, 255, 0.32) rgba(10, 10, 15, 0.4);
-  scrollbar-width: thin;
-}
-
-.gig-card {
-  flex: 0 0 auto;
-  width: clamp(10rem, 42vw, 13rem);
-  scroll-snap-align: start;
-  scroll-margin-inline-start: 0;
-  padding: clamp(0.65rem, 2.2vw, 0.9rem);
-  border: 1px solid rgba(232, 230, 227, 0.1);
-  background: rgba(10, 10, 15, 0.5);
-  outline-offset: 2px;
-}
-
-.gig-card:focus-visible {
-  outline: 1px solid var(--cyan);
-}
-
-.gig-card-date {
-  margin: 0 0 0.55rem;
-  color: var(--cyan);
-  font-size: 0.92rem;
+.gig-time {
+  color: var(--bone);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
 }
 
-.gig-card-details {
-  margin: 0;
+.gig-row {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.6rem;
+  overflow-x: auto;
+  scrollbar-color: rgba(45, 228, 255, 0.38) rgba(10, 10, 15, 0.45);
 }
 
-.gig-field {
-  display: grid;
-  grid-template-columns: 2.8rem 1fr;
-  gap: 0.25rem;
-  margin-bottom: 0.28rem;
-}
-
-.gig-field:last-child {
-  margin-bottom: 0;
-}
-
-.gig-field dt {
-  color: var(--dust);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding-top: 0.06em;
-}
-
-.gig-field dd {
-  margin: 0;
-  color: rgba(232, 230, 227, 0.88);
-  font-size: 0.82rem;
-  line-height: 1.4;
+.gig-row .gig-panel {
+  flex: 0 0 auto;
+  width: min(20rem, 78vw);
 }
 
 .player-panel {

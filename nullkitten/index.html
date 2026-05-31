@@ -43,21 +43,26 @@
       </header>
 
       <main>
-        <section class="persona-bio" aria-labelledby="bio-title">
-          <p class="section-kicker">who is this</p>
-          <h2 id="bio-title">Null.Kitten</h2>
-          <p>
-            Null.Kitten is a visual artist and event technician working across
-            lights, screens, sound, and strange little systems. The project grew
-            out of performance spaces &mdash; VJ work, lighting, live tech, and the
-            soft chaos behind a room coming alive.
-          </p>
-          <p>
-            The music is part of the same machine: self-written, self-built, and
-            tuned for late rooms, damaged signals, and people who like their
-            technology with fingerprints on it.
-          </p>
-        </section>
+        <details class="persona-bio" open>
+          <summary aria-labelledby="bio-title">
+            <span class="panel-marker" aria-hidden="true"></span>
+            <span class="section-kicker">who is this</span>
+            <h2 id="bio-title">Null.Kitten</h2>
+          </summary>
+          <div class="persona-body">
+            <p>
+              Null.Kitten is a visual artist and event technician working across
+              lights, screens, sound, and strange little systems. The project grew
+              out of performance spaces &mdash; VJ work, lighting, live tech, and the
+              soft chaos behind a room coming alive.
+            </p>
+            <p>
+              The music is part of the same machine: self-written, self-built, and
+              tuned for late rooms, damaged signals, and people who like their
+              technology with fingerprints on it.
+            </p>
+          </div>
+        </details>
 
         <section class="panel-stack" aria-label="What Null.Kitten does">
           <details class="panel-collapse" open>

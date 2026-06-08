@@ -90,6 +90,7 @@ const playToggle = document.getElementById("play-toggle");
 const prevTrack = document.getElementById("prev-track");
 const nextTrack = document.getElementById("next-track");
 const stopTrack = document.getElementById("stop-track");
+const shuffleToggle = document.getElementById("shuffle-toggle");
 const trackName = document.getElementById("track-name");
 const trackAlbum = document.getElementById("track-album");
 const trackDuration = document.getElementById("track-duration");
@@ -111,6 +112,8 @@ let listenSeconds = 0;
 let lastPlaybackSample = 0;
 let playCountRecorded = false;
 let activeCountTrackId = null;
+let shuffleActive = false;
+const playbackHistory = [];
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
@@ -315,8 +318,34 @@ function setPlaybackButton(isPlaying) {
   updatePlaylistState();
 }
 
-function loadTrack(index, shouldPlay = false) {
-  activeTrackIndex = (index + tracklist.length) % tracklist.length;
+function updateShuffleButton() {
+  shuffleToggle.classList.toggle("is-active", shuffleActive);
+  shuffleToggle.setAttribute("aria-pressed", String(shuffleActive));
+  shuffleToggle.setAttribute("aria-label", `Shuffle ${shuffleActive ? "on" : "off"}`);
+}
+
+function randomTrackIndex() {
+  if (tracklist.length <= 1) {
+    return activeTrackIndex;
+  }
+
+  let nextIndex = activeTrackIndex;
+
+  while (nextIndex === activeTrackIndex) {
+    nextIndex = Math.floor(Math.random() * tracklist.length);
+  }
+
+  return nextIndex;
+}
+
+function loadTrack(index, shouldPlay = false, { recordHistory = true } = {}) {
+  const nextIndex = (index + tracklist.length) % tracklist.length;
+
+  if (shuffleActive && recordHistory && nextIndex !== activeTrackIndex) {
+    playbackHistory.push(activeTrackIndex);
+  }
+
+  activeTrackIndex = nextIndex;
   const track = tracklist[activeTrackIndex];
 
   isSeeking = false;
@@ -342,6 +371,25 @@ function loadTrack(index, shouldPlay = false) {
       // Playback stays user-initiated; if the file is missing, the UI still loads cleanly.
     });
   }
+}
+
+function playNextTrack() {
+  const nextIndex = shuffleActive ? randomTrackIndex() : activeTrackIndex + 1;
+  loadTrack(nextIndex, true);
+}
+
+function playPreviousTrack() {
+  if (shuffleActive) {
+    const previousIndex = playbackHistory.pop();
+
+    if (Number.isInteger(previousIndex)) {
+      loadTrack(previousIndex, true, { recordHistory: false });
+    }
+
+    return;
+  }
+
+  loadTrack(activeTrackIndex - 1, true);
 }
 
 function syncProgress() {
@@ -371,14 +419,19 @@ function togglePlayback() {
 }
 
 playToggle.addEventListener("click", togglePlayback);
-prevTrack.addEventListener("click", () => loadTrack(activeTrackIndex - 1, true));
-nextTrack.addEventListener("click", () => loadTrack(activeTrackIndex + 1, true));
+prevTrack.addEventListener("click", playPreviousTrack);
+nextTrack.addEventListener("click", playNextTrack);
 stopTrack.addEventListener("click", () => {
   audio.pause();
   audio.currentTime = 0;
   isSeeking = false;
   resetPlayCountState();
   syncProgress();
+});
+
+shuffleToggle.addEventListener("click", () => {
+  shuffleActive = !shuffleActive;
+  updateShuffleButton();
 });
 
 progressRange.addEventListener("input", () => {
@@ -438,7 +491,7 @@ audio.addEventListener("seeked", () => {
   syncProgress();
 });
 
-audio.addEventListener("ended", () => loadTrack(activeTrackIndex + 1, true));
+audio.addEventListener("ended", playNextTrack);
 
 audio.addEventListener("error", () => {
   trackDuration.textContent = "offline";
@@ -455,6 +508,7 @@ playerShell.addEventListener("contextmenu", (event) => {
 });
 
 renderPlaylist();
+updateShuffleButton();
 loadTrack(0, false);
 maybeLoadPlayCounts();
 

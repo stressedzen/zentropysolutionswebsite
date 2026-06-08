@@ -650,6 +650,19 @@ main {
   color: var(--magenta);
 }
 
+.shuffle-button.is-active {
+  border-color: rgba(45, 228, 255, 0.58);
+  color: var(--cyan);
+  text-shadow:
+    -0.08rem 0 rgba(255, 45, 156, 0.48),
+    0 0 0.55rem rgba(45, 228, 255, 0.44);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 230, 227, 0.18),
+    inset 0 -0.45rem 0.8rem rgba(0, 0, 0, 0.32),
+    0 0 0.85rem rgba(45, 228, 255, 0.2),
+    0 0 1.15rem rgba(255, 45, 156, 0.14);
+}
+
 .playlist-panel {
   border: 1px solid rgba(232, 230, 227, 0.12);
   background:
@@ -887,9 +900,9 @@ main {
     justify-self: start;
   }
 
-  .transport-row {
+  .player-skin > .transport-row {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .skin-button,

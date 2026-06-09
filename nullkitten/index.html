@@ -189,7 +189,7 @@ Recompiled for new systems.
           <div class="player-skin" data-player-shell>
             <audio
               id="player-audio"
-              preload="none"
+              preload="metadata"
               controlsList="nodownload"
               aria-label="Null.Kitten stream player"
             ></audio>
@@ -197,7 +197,20 @@ Recompiled for new systems.
             <div class="skin-topbar">
               <div>
                 <p class="section-kicker">null.kitten device</p>
-                <h2 id="player-title">MEATSPACE//INIT</h2>
+                <h2 class="sr-only" id="player-title">MEATSPACE//INIT</h2>
+                <div class="album-selector" data-album-selector>
+                  <button
+                    class="album-toggle"
+                    type="button"
+                    id="album-toggle"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span aria-hidden="true">▼</span>
+                    <span id="current-album-name">MEATSPACE//INIT</span>
+                  </button>
+                  <div class="album-menu" id="album-menu" role="listbox" hidden></div>
+                </div>
               </div>
               <span class="track-count" id="track-count">01 / 09</span>
             </div>
@@ -260,6 +273,15 @@ Recompiled for new systems.
                 aria-pressed="false"
               >
                 <span aria-hidden="true">[RND]</span>
+              </button>
+              <button
+                class="skin-button shuffle-mode-button is-single"
+                type="button"
+                id="shuffle-mode"
+                aria-label="Shuffle mode: single album"
+                hidden
+              >
+                <span aria-hidden="true">[SNG]</span>
               </button>
             </div>
 

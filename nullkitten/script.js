@@ -1,89 +1,91 @@
 const TRACK_COUNTER_URL = "./track-counter.php";
 const PLAY_COUNT_THRESHOLD_SECONDS = 10;
 
-const tracklist = [
-  {
-    id: "boot-sequence",
-    title: "B00T::SEQ//",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 1,
-    duration: "3:21",
-    src: "assets/audio/album-01/Boot Sequence.mp3",
-  },
-  {
-    id: "memory-loss",
-    title: "MEMØRY_LØ$$",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 2,
-    duration: "6:59",
-    src: "assets/audio/album-01/Memory Loss.mp3",
-  },
-  {
-    id: "body-horror",
-    title: "B0DY_H0RRØR.exe",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 3,
-    duration: "2:48",
-    src: "assets/audio/album-01/Body Horror.mp3",
-  },
-  {
-    id: "into-analog",
-    title: ">into_analog_",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 4,
-    duration: "3:45",
-    src: "assets/audio/album-01/Into Analog.mp3",
-  },
-  {
-    id: "hoomans",
-    title: "H00M4N$.tmp",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 5,
-    duration: "3:12",
-    src: "assets/audio/album-01/Hoomans.mp3",
-  },
-  {
-    id: "consume",
-    title: "C0N$UME.dll",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 6,
-    duration: "3:03",
-    src: "assets/audio/album-01/Consume.mp3",
-  },
-  {
-    id: "patch-notes",
-    title: "PATCH_NOTES.md",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 7,
-    duration: "3:26",
-    src: "assets/audio/album-01/Patch Notes.mp3",
-  },
-  {
-    id: "contraband-pulse",
-    title: "CØNTRABAND_PUL$E",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 8,
-    duration: "3:00",
-    src: "assets/audio/album-01/Contraband Pulse.mp3",
-  },
-  {
-    id: "kult",
-    title: "KµLT//ERR",
-    artist: "Null.Kitten",
-    album: "MEATSPACE//INIT",
-    track: 9,
-    duration: "3:07",
-    src: "assets/audio/album-01/Kult.mp3",
-  },
-];
+const albums = {
+  "MEATSPACE//INIT": [
+    {
+      id: "boot-sequence",
+      title: "B00T::SEQ//",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 1,
+      duration: "3:21",
+      src: "assets/audio/album-01/Boot Sequence.mp3",
+    },
+    {
+      id: "memory-loss",
+      title: "MEMØRY_LØ$$",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 2,
+      duration: "6:59",
+      src: "assets/audio/album-01/Memory Loss.mp3",
+    },
+    {
+      id: "body-horror",
+      title: "B0DY_H0RRØR.exe",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 3,
+      duration: "2:48",
+      src: "assets/audio/album-01/Body Horror.mp3",
+    },
+    {
+      id: "into-analog",
+      title: ">into_analog_",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 4,
+      duration: "3:45",
+      src: "assets/audio/album-01/Into Analog.mp3",
+    },
+    {
+      id: "hoomans",
+      title: "H00M4N$.tmp",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 5,
+      duration: "3:12",
+      src: "assets/audio/album-01/Hoomans.mp3",
+    },
+    {
+      id: "consume",
+      title: "C0N$UME.dll",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 6,
+      duration: "3:03",
+      src: "assets/audio/album-01/Consume.mp3",
+    },
+    {
+      id: "patch-notes",
+      title: "PATCH_NOTES.md",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 7,
+      duration: "3:26",
+      src: "assets/audio/album-01/Patch Notes.mp3",
+    },
+    {
+      id: "contraband-pulse",
+      title: "CØNTRABAND_PUL$E",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 8,
+      duration: "3:00",
+      src: "assets/audio/album-01/Contraband Pulse.mp3",
+    },
+    {
+      id: "kult",
+      title: "KµLT//ERR",
+      artist: "Null.Kitten",
+      album: "MEATSPACE//INIT",
+      track: 9,
+      duration: "3:07",
+      src: "assets/audio/album-01/Kult.mp3",
+    },
+  ],
+};
 
 const audio = document.getElementById("player-audio");
 const playToggle = document.getElementById("play-toggle");
@@ -91,9 +93,14 @@ const prevTrack = document.getElementById("prev-track");
 const nextTrack = document.getElementById("next-track");
 const stopTrack = document.getElementById("stop-track");
 const shuffleToggle = document.getElementById("shuffle-toggle");
+const shuffleModeToggle = document.getElementById("shuffle-mode");
+const albumToggle = document.getElementById("album-toggle");
+const currentAlbumName = document.getElementById("current-album-name");
+const albumMenu = document.getElementById("album-menu");
 const trackName = document.getElementById("track-name");
 const trackAlbum = document.getElementById("track-album");
 const trackDuration = document.getElementById("track-duration");
+const playerTitle = document.getElementById("player-title");
 const currentTime = document.getElementById("current-time");
 const remainingTime = document.getElementById("remaining-time");
 const progressFill = document.getElementById("progress-fill");
@@ -101,7 +108,10 @@ const progressRange = document.getElementById("progress-range");
 const trackCount = document.getElementById("track-count");
 const playerShell = document.querySelector("[data-player-shell]");
 const playlist = document.getElementById("playlist");
+const albumNames = Object.keys(albums);
 
+let activeAlbumName = albumNames[0];
+let tracklist = albums[activeAlbumName];
 let activeTrackIndex = 0;
 let isSeeking = false;
 let playCountsLoaded = false;
@@ -113,6 +123,7 @@ let lastPlaybackSample = 0;
 let playCountRecorded = false;
 let activeCountTrackId = null;
 let shuffleActive = false;
+let shuffleMode = "SNG";
 const playbackHistory = [];
 
 function formatTime(seconds) {
@@ -129,10 +140,24 @@ function updateTrackCount() {
   trackCount.textContent = `${current} / ${total}`;
 }
 
+function allAlbumTracks() {
+  return albumNames.flatMap((albumName) =>
+    albums[albumName].map((track, index) => ({ albumName, index, track }))
+  );
+}
+
+function currentTrackRef() {
+  return { albumName: activeAlbumName, index: activeTrackIndex };
+}
+
+function isSameTrackRef(first, second) {
+  return first.albumName === second.albumName && first.index === second.index;
+}
+
 function normalizePlayCounts(rawCounts) {
   const normalized = Object.create(null);
 
-  tracklist.forEach((track) => {
+  allAlbumTracks().forEach(({ track }) => {
     const value = rawCounts && Number(rawCounts[track.id]);
     normalized[track.id] = Number.isFinite(value) && value >= 0 ? Math.floor(value) : 0;
   });
@@ -300,6 +325,39 @@ function renderPlaylist() {
   applyPlayCounts();
 }
 
+function updateAlbumSelector() {
+  currentAlbumName.textContent = activeAlbumName;
+  playerTitle.textContent = activeAlbumName;
+  albumToggle.setAttribute("aria-label", `Album: ${activeAlbumName}`);
+
+  albumMenu.querySelectorAll(".album-option").forEach((button) => {
+    const isActive = button.dataset.albumName === activeAlbumName;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+}
+
+function renderAlbumSelector() {
+  albumMenu.innerHTML = "";
+
+  albumNames.forEach((albumName) => {
+    const button = document.createElement("button");
+    button.className = "album-option";
+    button.type = "button";
+    button.setAttribute("role", "option");
+    button.dataset.albumName = albumName;
+    button.textContent = albumName;
+    albumMenu.append(button);
+  });
+
+  updateAlbumSelector();
+}
+
+function setAlbumMenuOpen(isOpen) {
+  albumMenu.hidden = !isOpen;
+  albumToggle.setAttribute("aria-expanded", String(isOpen));
+}
+
 function updatePlaylistState() {
   playlist.querySelectorAll(".playlist-track").forEach((button, index) => {
     const isActive = index === activeTrackIndex;
@@ -322,27 +380,48 @@ function updateShuffleButton() {
   shuffleToggle.classList.toggle("is-active", shuffleActive);
   shuffleToggle.setAttribute("aria-pressed", String(shuffleActive));
   shuffleToggle.setAttribute("aria-label", `Shuffle ${shuffleActive ? "on" : "off"}`);
+  shuffleModeToggle.hidden = !shuffleActive;
+  shuffleModeToggle.textContent = `[${shuffleMode}]`;
+  shuffleModeToggle.classList.toggle("is-single", shuffleMode === "SNG");
+  shuffleModeToggle.classList.toggle("is-album", shuffleMode === "ALB");
+  shuffleModeToggle.setAttribute(
+    "aria-label",
+    `Shuffle mode: ${shuffleMode === "SNG" ? "single album" : "all albums"}`
+  );
 }
 
-function randomTrackIndex() {
-  if (tracklist.length <= 1) {
-    return activeTrackIndex;
+function randomTrackRef() {
+  const candidates =
+    shuffleMode === "ALB"
+      ? allAlbumTracks()
+      : tracklist.map((track, index) => ({ albumName: activeAlbumName, index, track }));
+  const currentRef = currentTrackRef();
+  const available = candidates.filter((candidate) => !isSameTrackRef(candidate, currentRef));
+
+  if (!available.length) {
+    return currentRef;
   }
 
-  let nextIndex = activeTrackIndex;
-
-  while (nextIndex === activeTrackIndex) {
-    nextIndex = Math.floor(Math.random() * tracklist.length);
-  }
-
-  return nextIndex;
+  const selected = available[Math.floor(Math.random() * available.length)];
+  return { albumName: selected.albumName, index: selected.index };
 }
 
-function loadTrack(index, shouldPlay = false, { recordHistory = true } = {}) {
-  const nextIndex = (index + tracklist.length) % tracklist.length;
+function loadTrack(index, shouldPlay = false, { albumName = activeAlbumName, recordHistory = true } = {}) {
+  const targetAlbumName = albums[albumName] ? albumName : activeAlbumName;
+  const targetTracks = albums[targetAlbumName];
+  const nextIndex = (index + targetTracks.length) % targetTracks.length;
+  const nextRef = { albumName: targetAlbumName, index: nextIndex };
+  const currentRef = currentTrackRef();
 
-  if (shuffleActive && recordHistory && nextIndex !== activeTrackIndex) {
-    playbackHistory.push(activeTrackIndex);
+  if (shuffleActive && recordHistory && !isSameTrackRef(nextRef, currentRef)) {
+    playbackHistory.push(currentRef);
+  }
+
+  if (targetAlbumName !== activeAlbumName) {
+    activeAlbumName = targetAlbumName;
+    tracklist = albums[activeAlbumName];
+    renderPlaylist();
+    updateAlbumSelector();
   }
 
   activeTrackIndex = nextIndex;
@@ -374,16 +453,24 @@ function loadTrack(index, shouldPlay = false, { recordHistory = true } = {}) {
 }
 
 function playNextTrack() {
-  const nextIndex = shuffleActive ? randomTrackIndex() : activeTrackIndex + 1;
-  loadTrack(nextIndex, true);
+  if (shuffleActive) {
+    const nextRef = randomTrackRef();
+    loadTrack(nextRef.index, true, { albumName: nextRef.albumName });
+    return;
+  }
+
+  loadTrack(activeTrackIndex + 1, true);
 }
 
 function playPreviousTrack() {
   if (shuffleActive) {
-    const previousIndex = playbackHistory.pop();
+    const previousRef = playbackHistory.pop();
 
-    if (Number.isInteger(previousIndex)) {
-      loadTrack(previousIndex, true, { recordHistory: false });
+    if (previousRef) {
+      loadTrack(previousRef.index, true, {
+        albumName: previousRef.albumName,
+        recordHistory: false,
+      });
     }
 
     return;
@@ -432,6 +519,34 @@ stopTrack.addEventListener("click", () => {
 shuffleToggle.addEventListener("click", () => {
   shuffleActive = !shuffleActive;
   updateShuffleButton();
+});
+
+shuffleModeToggle.addEventListener("click", () => {
+  shuffleMode = shuffleMode === "SNG" ? "ALB" : "SNG";
+  updateShuffleButton();
+});
+
+albumToggle.addEventListener("click", () => {
+  setAlbumMenuOpen(albumMenu.hidden);
+});
+
+albumMenu.addEventListener("click", (event) => {
+  const button = event.target.closest(".album-option");
+  if (!button) return;
+
+  loadTrack(0, false, {
+    albumName: button.dataset.albumName,
+    recordHistory: false,
+  });
+  setAlbumMenuOpen(false);
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-album-selector]")) {
+    return;
+  }
+
+  setAlbumMenuOpen(false);
 });
 
 progressRange.addEventListener("input", () => {
@@ -507,6 +622,7 @@ playerShell.addEventListener("contextmenu", (event) => {
   event.preventDefault();
 });
 
+renderAlbumSelector();
 renderPlaylist();
 updateShuffleButton();
 loadTrack(0, false);

@@ -488,6 +488,79 @@ main {
   font-size: 0.86rem;
 }
 
+.album-selector {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+
+.album-toggle,
+.album-option {
+  min-height: 1.85rem;
+  border: 1px solid rgba(232, 230, 227, 0.14);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(232, 230, 227, 0.08), rgba(45, 228, 255, 0.025)),
+    rgba(8, 8, 13, 0.86);
+  color: rgba(232, 230, 227, 0.9);
+  font: 700 0.78rem/1 var(--body-font);
+  text-align: left;
+  cursor: pointer;
+}
+
+.album-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.5rem;
+  box-shadow:
+    inset 0 1px 0 rgba(232, 230, 227, 0.12),
+    inset 0 -0.35rem 0.7rem rgba(0, 0, 0, 0.28);
+}
+
+.album-toggle:hover,
+.album-toggle:focus-visible,
+.album-option:hover,
+.album-option:focus-visible {
+  border-color: rgba(45, 228, 255, 0.42);
+  color: var(--cyan);
+}
+
+.album-menu {
+  position: absolute;
+  z-index: 4;
+  top: calc(100% + 0.28rem);
+  left: 0;
+  display: grid;
+  width: max-content;
+  min-width: 100%;
+  max-width: min(19rem, calc(100vw - 2rem));
+  padding: 0.22rem;
+  border: 1px solid rgba(232, 230, 227, 0.14);
+  background:
+    linear-gradient(135deg, rgba(255, 45, 156, 0.06), transparent 38%),
+    rgba(5, 5, 9, 0.96);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 230, 227, 0.12),
+    0 0.8rem 1.8rem rgba(0, 0, 0, 0.46),
+    0 0 1.2rem rgba(45, 228, 255, 0.08);
+}
+
+.album-menu[hidden] {
+  display: none;
+}
+
+.album-option {
+  width: 100%;
+  padding: 0.42rem 0.52rem;
+}
+
+.album-option.is-active {
+  border-color: rgba(255, 45, 156, 0.34);
+  color: var(--bone);
+  box-shadow: inset 0.16rem 0 0 var(--magenta);
+}
+
 .track-count {
   color: var(--cyan);
   font-variant-numeric: tabular-nums;
@@ -661,6 +734,18 @@ main {
     inset 0 -0.45rem 0.8rem rgba(0, 0, 0, 0.32),
     0 0 0.85rem rgba(45, 228, 255, 0.2),
     0 0 1.15rem rgba(255, 45, 156, 0.14);
+}
+
+.shuffle-mode-button.is-single {
+  border-color: rgba(45, 228, 255, 0.5);
+  color: var(--cyan);
+  text-shadow: 0 0 0.52rem rgba(45, 228, 255, 0.46);
+}
+
+.shuffle-mode-button.is-album {
+  border-color: rgba(255, 45, 156, 0.5);
+  color: var(--magenta);
+  text-shadow: 0 0 0.52rem rgba(255, 45, 156, 0.46);
 }
 
 .playlist-panel {
@@ -902,7 +987,7 @@ main {
 
   .player-skin > .transport-row {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(2.55rem, 1fr));
   }
 
   .skin-button,

@@ -170,3 +170,20 @@ if (canvas instanceof HTMLCanvasElement) {
     draw();
   });
 }
+
+const downloadsContainer = document.querySelector("[data-loreloom-downloads]");
+
+if (downloadsContainer) {
+  const ua = navigator.userAgent || "";
+  let detectedOs = "other";
+
+  if (/Windows/i.test(ua)) {
+    detectedOs = "windows";
+  } else if (/Macintosh|Mac OS X/i.test(ua)) {
+    detectedOs = "mac";
+  } else if (/Linux/i.test(ua) && !/Android/i.test(ua)) {
+    detectedOs = "linux";
+  }
+
+  downloadsContainer.dataset.os = detectedOs;
+}

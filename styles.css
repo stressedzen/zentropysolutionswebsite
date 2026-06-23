@@ -1241,16 +1241,25 @@ h2 {
 }
 
 .loreloom-page .nav-logo-wrap-loreloom {
-  padding: 0.12rem 0.45rem;
+  position: relative;
+  width: 194px;
+  height: 48px;
+  padding: 0;
+  overflow: hidden;
   background: rgba(255, 248, 236, 0.92);
   border: 1px solid rgba(200, 147, 47, 0.36);
 }
 
 .loreloom-page .brand .nav-logo {
-  width: 194px;
-  max-width: 194px;
-  max-height: 38px;
-  object-fit: contain;
+  visibility: visible;
+  display: block;
+  position: absolute;
+  top: -24px;
+  left: 5px;
+  width: auto;
+  height: 110px;
+  max-width: none;
+  max-height: none;
 }
 
 .loreloom-hero {
@@ -1261,43 +1270,19 @@ h2 {
     linear-gradient(135deg, #fffaf1 0%, var(--loreloom-parchment) 58%, #e9d2ae 100%);
 }
 
-.loreloom-hero::before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(51, 19, 52, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(51, 19, 52, 0.025) 1px, transparent 1px);
-  background-size: 42px 42px;
-  content: "";
-  mix-blend-mode: multiply;
-}
-
-.loreloom-hero .hero-canvas {
-  opacity: 0.14;
-}
-
-.loreloom-hero .hero-grid {
-  box-shadow: inset 0 -1px 0 rgba(200, 147, 47, 0.24);
-}
-
 .loreloom-hero h1,
-.loreloom-hero .signal-list dt,
 .loreloom-page h2,
 .loreloom-page .service-card h3,
 .loreloom-page .process-list span {
   color: var(--loreloom-ink);
 }
 
-.loreloom-hero h1,
 .loreloom-page h2 {
-  font-family: Georgia, "Times New Roman", serif;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 
 .loreloom-hero .hero-lede,
-.loreloom-hero .signal-list dd,
 .loreloom-page .intro-copy,
 .loreloom-page .process-heading p:last-child,
 .loreloom-page .contact-copy {
@@ -1309,31 +1294,6 @@ h2 {
 .loreloom-page .project-label {
   color: var(--loreloom-plum-bright);
   letter-spacing: 0.08em;
-}
-
-.loreloom-hero-inner {
-  grid-template-columns: minmax(0, 0.88fr) minmax(390px, 1.12fr);
-}
-
-.loreloom-logo-plaque {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  padding: 1.15rem;
-  background:
-    radial-gradient(circle at 72% 24%, rgba(200, 147, 47, 0.2), transparent 13rem),
-    rgba(255, 250, 241, 0.78);
-  border: 1px solid rgba(200, 147, 47, 0.36);
-  border-radius: 8px;
-  box-shadow:
-    0 30px 90px rgba(51, 19, 52, 0.18),
-    inset 0 0 0 1px rgba(255, 250, 241, 0.64);
-}
-
-.loreloom-logo-plaque img {
-  width: min(100%, 660px);
-  filter: drop-shadow(0 18px 28px rgba(51, 19, 52, 0.22));
 }
 
 .loreloom-page .button-primary {
@@ -1549,12 +1509,6 @@ h2 {
     justify-content: flex-start;
   }
 
-  .loreloom-logo-plaque {
-    order: -1;
-    width: min(100%, 720px);
-    justify-content: flex-start;
-  }
-
   .hero h1 {
     font-size: 3.9rem;
   }
@@ -1595,8 +1549,7 @@ h2 {
   }
 
   .modern-relic-logo-plaque img,
-  .muse-logo-plaque img,
-  .loreloom-logo-plaque img {
+  .muse-logo-plaque img {
     max-height: 260px;
   }
 }
@@ -1615,6 +1568,18 @@ h2 {
     max-width: 190px;
     height: 40px;
     padding: 0.24rem 0.5rem;
+  }
+
+  .loreloom-page .nav-logo-wrap-loreloom {
+    width: 168px;
+    height: 42px;
+    padding: 0;
+  }
+
+  .loreloom-page .brand .nav-logo {
+    top: -20px;
+    left: 4px;
+    height: 96px;
   }
 
   .brand .nav-logo {
@@ -1655,17 +1620,12 @@ h2 {
     max-height: 220px;
   }
 
-  .muse-logo-plaque img,
-  .loreloom-logo-plaque img {
+  .muse-logo-plaque img {
     max-height: 220px;
   }
 
-  .modern-relic-logo-plaque {
-    padding: 0.8rem;
-  }
-
-  .muse-logo-plaque,
-  .loreloom-logo-plaque {
+  .modern-relic-logo-plaque,
+  .muse-logo-plaque {
     padding: 0.8rem;
   }
 
@@ -1751,5 +1711,629 @@ h2 {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* === LoreLoom private-alpha hero (redesign) ===================== */
+
+.loreloom-page {
+  font-family: "Spectral", Georgia, "Times New Roman", serif;
+}
+
+.loreloom-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 12% 8%, rgba(123, 43, 125, 0.10), transparent 55%),
+    radial-gradient(100% 80% at 92% 96%, rgba(200, 147, 47, 0.12), transparent 55%),
+    radial-gradient(60% 50% at 78% 18%, rgba(140, 74, 63, 0.06), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.012) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+}
+
+.loreloom-hero {
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(123, 43, 125, 0.10), transparent 55%),
+    radial-gradient(100% 80% at 100% 100%, rgba(200, 147, 47, 0.12), transparent 60%),
+    linear-gradient(180deg, #eddfc3 0%, var(--loreloom-parchment) 100%);
+}
+
+.loreloom-hero-inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 2.5rem;
+}
+
+.loreloom-hero-copy {
+  position: relative;
+  max-width: 620px;
+}
+
+.loreloom-hero .loreloom-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--loreloom-plum);
+  background: rgba(90, 49, 73, 0.07);
+  border: 1px solid rgba(90, 49, 73, 0.22);
+  border-radius: 2px;
+}
+
+.loreloom-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--loreloom-gold);
+  box-shadow: 0 0 0 3px rgba(200, 147, 47, 0.25);
+}
+
+.loreloom-hero h1 {
+  max-width: none;
+  margin-top: 1.4rem;
+  margin-bottom: 0;
+  color: var(--loreloom-ink);
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5.2vw, 4.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+
+.loreloom-hero .loreloom-em {
+  position: relative;
+  white-space: nowrap;
+  color: var(--loreloom-plum-bright);
+  font-style: italic;
+}
+
+.loreloom-hero .loreloom-em::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.08em;
+  height: 0.34em;
+  background:
+    no-repeat center/100% 100%
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'><path d='M2 7 C 40 2, 70 11, 110 6 S 180 3, 198 8' fill='none' stroke='%23c8932f' stroke-width='2.4' stroke-linecap='round'/></svg>");
+  opacity: 0.85;
+}
+
+.loreloom-hero .loreloom-sub {
+  max-width: 30em;
+  margin-top: 1.6rem;
+  margin-bottom: 0;
+  color: var(--text-soft);
+  font-family: "Spectral", Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  line-height: 1.62;
+}
+
+.loreloom-hero .loreloom-sub b {
+  color: var(--loreloom-ink);
+  font-weight: 500;
+}
+
+.loreloom-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.loreloom-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loreloom-trust-sep {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c3b18a;
+}
+
+.loreloom-margin-note {
+  font-family: "Caveat", cursive;
+  font-size: 1.32rem;
+  line-height: 1.15;
+  color: #8c4a3f;
+  pointer-events: none;
+}
+
+.loreloom-mn-1 {
+  position: absolute;
+  top: -0.4rem;
+  right: -1.4rem;
+  width: 9.4rem;
+  transform: rotate(4deg);
+  text-align: left;
+}
+
+/* The loom: warp + branching weft + pinned fragments */
+.loreloom-loom {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 5 / 5.6;
+  justify-self: end;
+}
+
+.loreloom-threads {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.loreloom-frag {
+  position: absolute;
+  width: 11.75rem;
+  padding: 0.7rem 0.9rem 0.75rem;
+  background: #f3ead2;
+  border: 1px solid #c3b18a;
+  border-radius: 3px;
+  box-shadow: 2px 4px 12px rgba(36, 31, 26, 0.16);
+  transform-origin: left center;
+}
+
+.loreloom-frag::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--loreloom-gold);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.loreloom-frag-kind {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--loreloom-gold);
+  font-family: "Spectral", Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.loreloom-frag-txt {
+  color: var(--loreloom-ink);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.loreloom-f1 { left: 46%; top:  4%; transform: rotate(-2.4deg); --r: -2.4deg; }
+.loreloom-f2 { left: 54%; top: 31%; transform: rotate(1.8deg);  --r:  1.8deg; }
+.loreloom-f3 { left: 44%; top: 58%; transform: rotate(-1.4deg); --r: -1.4deg; }
+.loreloom-f4 { left: 50%; top: 83%; transform: rotate(2.2deg);  --r:  2.2deg; }
+
+.loreloom-loom-note {
+  position: absolute;
+  left: -4%;
+  bottom: 40%;
+  font-family: "Caveat", cursive;
+  font-size: 1.16rem;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0.85;
+  transform: rotate(-90deg);
+  transform-origin: left;
+}
+
+/* Thread draw-in */
+.loreloom-thread {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: loreloom-draw 1.5s ease forwards;
+}
+.loreloom-t2 { animation-delay: 0.18s; }
+.loreloom-t3 { animation-delay: 0.34s; }
+.loreloom-t4 { animation-delay: 0.5s; }
+@keyframes loreloom-draw { to { stroke-dashoffset: 0; } }
+
+/* Fragment settle-in */
+.loreloom-frag {
+  opacity: 0;
+  animation: loreloom-settle 0.7s ease forwards;
+}
+.loreloom-f1 { animation-delay: 0.55s; }
+.loreloom-f2 { animation-delay: 0.72s; }
+.loreloom-f3 { animation-delay: 0.88s; }
+.loreloom-f4 { animation-delay: 1.04s; }
+@keyframes loreloom-settle {
+  from { opacity: 0; transform: translateY(10px) rotate(var(--r, 0deg)); }
+  to   { opacity: 1; }
+}
+
+/* Copy rise-in */
+.loreloom-hero-copy > * {
+  opacity: 0;
+  animation: loreloom-rise 0.8s ease forwards;
+}
+.loreloom-hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+.loreloom-hero-copy > *:nth-child(2) { animation-delay: 0.16s; }
+.loreloom-hero-copy > *:nth-child(3) { animation-delay: 0.27s; }
+.loreloom-hero-copy > *:nth-child(4) { animation-delay: 0.38s; }
+.loreloom-hero-copy > *:nth-child(5) { animation-delay: 0.49s; }
+@keyframes loreloom-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons: warmer, on-brand override */
+.loreloom-page .button {
+  min-height: 0;
+  padding: 0.85rem 1.6rem;
+  border-radius: 3px;
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+}
+
+.loreloom-page .button-primary {
+  color: #f6ecd6;
+  background: var(--loreloom-plum);
+  border: 1px solid #3f2233;
+  box-shadow:
+    0 2px 0 #3f2233,
+    3px 5px 14px rgba(63, 34, 51, 0.28);
+}
+
+.loreloom-page .button-primary:hover,
+.loreloom-page .button-primary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 0 #3f2233,
+    4px 8px 20px rgba(63, 34, 51, 0.32);
+}
+
+.loreloom-page .button-secondary {
+  color: var(--loreloom-ink);
+  background: transparent;
+  border-color: #c3b18a;
+}
+
+.loreloom-page .button-secondary:hover,
+.loreloom-page .button-secondary:focus-visible {
+  color: var(--loreloom-plum);
+  background: rgba(200, 147, 47, 0.10);
+  border-color: var(--loreloom-gold);
+}
+
+/* Body fonts everywhere on LoreLoom page */
+.loreloom-page h2,
+.loreloom-page .service-card h3,
+.loreloom-page .process-list span {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+@media (max-width: 1060px) {
+  .loreloom-hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .loreloom-loom {
+    order: -1;
+    margin: 0 auto;
+    max-width: 26rem;
+    justify-self: center;
+  }
+  .loreloom-mn-1 { right: 0; }
+}
+
+@media (max-width: 680px) {
+  .loreloom-loom { max-width: 22rem; }
+  .loreloom-frag { width: 10.5rem; }
+  .loreloom-loom-note { font-size: 1rem; }
+  .loreloom-mn-1 {
+    position: static;
+    display: block;
+    margin-top: 0.4rem;
+    transform: rotate(2deg);
+  }
+}
+
+.loreloom-platform-aside .text-link,
+.loreloom-support-aside .text-link,
+.loreloom-download-tip .text-link {
+  color: var(--loreloom-plum);
+  border-bottom: 1px solid rgba(200, 147, 47, 0.6);
+}
+
+.loreloom-platform-aside .text-link:hover,
+.loreloom-platform-aside .text-link:focus-visible,
+.loreloom-support-aside .text-link:hover,
+.loreloom-support-aside .text-link:focus-visible,
+.loreloom-download-tip .text-link:hover,
+.loreloom-download-tip .text-link:focus-visible {
+  color: var(--loreloom-plum-bright);
+  border-bottom-color: var(--loreloom-plum-bright);
+}
+
+.loreloom-download-tip {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+.loreloom-support-aside {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+/* === LoreLoom hero downloads (alpha) ============================ */
+
+.loreloom-downloads {
+  margin-top: 2rem;
+}
+
+.loreloom-dl-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.loreloom-page .loreloom-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  min-height: 0;
+  text-align: left;
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  border-radius: 4px;
+}
+
+.loreloom-dl-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.loreloom-dl-label {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.loreloom-dl-platform {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.loreloom-dl-meta {
+  margin-top: 0.18rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  opacity: 0.78;
+}
+
+/* Default (no OS detected yet, or "other") — both look equal:
+   muted-primary plum frame so neither feels demoted. */
+.loreloom-page .loreloom-dl {
+  color: var(--loreloom-plum);
+  background: rgba(255, 250, 241, 0.72);
+  border: 1px solid rgba(123, 43, 125, 0.32);
+  box-shadow: 0 2px 0 rgba(63, 34, 51, 0.16);
+}
+
+.loreloom-page .loreloom-dl:hover,
+.loreloom-page .loreloom-dl:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--loreloom-plum);
+  background: rgba(255, 250, 241, 0.95);
+  box-shadow:
+    0 4px 0 rgba(63, 34, 51, 0.22),
+    4px 8px 20px rgba(63, 34, 51, 0.18);
+}
+
+/* OS-detected: matching button gets the full plum primary lift.
+   Other button quiets down to a ghost. */
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="mac"],
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="windows"] {
+  color: #f6ecd6;
+  background: var(--loreloom-plum);
+  border-color: #3f2233;
+  box-shadow:
+    0 2px 0 #3f2233,
+    3px 5px 14px rgba(63, 34, 51, 0.28);
+}
+
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="mac"]:hover,
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="mac"]:focus-visible,
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="windows"]:hover,
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="windows"]:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 0 #3f2233,
+    4px 8px 20px rgba(63, 34, 51, 0.32);
+}
+
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="windows"],
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="mac"] {
+  color: var(--loreloom-ink);
+  background: transparent;
+  border-color: #c3b18a;
+  box-shadow: none;
+}
+
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="windows"]:hover,
+.loreloom-downloads[data-os="mac"] .loreloom-dl[data-os-target="windows"]:focus-visible,
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="mac"]:hover,
+.loreloom-downloads[data-os="windows"] .loreloom-dl[data-os-target="mac"]:focus-visible {
+  color: var(--loreloom-plum);
+  border-color: var(--loreloom-gold);
+  background: rgba(200, 147, 47, 0.10);
+}
+
+/* Install notes (<details>) */
+.loreloom-install-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.loreloom-install {
+  background: rgba(255, 250, 241, 0.72);
+  border: 1px solid rgba(195, 177, 138, 0.7);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loreloom-install > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.95rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: "Spectral", Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--loreloom-ink);
+  user-select: none;
+}
+
+.loreloom-install > summary::-webkit-details-marker {
+  display: none;
+}
+
+.loreloom-install > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--loreloom-plum);
+  transition: transform 200ms ease;
+}
+
+.loreloom-install[open] > summary::after {
+  content: "\2212"; /* minus sign */
+}
+
+.loreloom-install:hover > summary,
+.loreloom-install > summary:focus-visible {
+  background: rgba(200, 147, 47, 0.08);
+}
+
+.loreloom-install-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.5rem;
+  font-family: "Spectral", Georgia, serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--loreloom-plum);
+  background: rgba(123, 43, 125, 0.08);
+  border: 1px solid rgba(123, 43, 125, 0.22);
+  border-radius: 2px;
+}
+
+.loreloom-install-body {
+  padding: 0.2rem 1rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+  border-top: 1px solid rgba(195, 177, 138, 0.45);
+}
+
+.loreloom-install-body p {
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+.loreloom-install-body p:first-child {
+  margin-top: 0.9rem;
+}
+
+.loreloom-install-head {
+  margin-top: 1.1rem !important;
+  color: var(--loreloom-ink);
+}
+
+.loreloom-install-body ol {
+  margin: 0.6rem 0 0;
+  padding-left: 1.3rem;
+}
+
+.loreloom-install-body ol li {
+  margin-top: 0.35rem;
+}
+
+.loreloom-install-body strong {
+  color: var(--loreloom-ink);
+  font-weight: 600;
+}
+
+.loreloom-install-body code {
+  padding: 0.05rem 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  color: var(--loreloom-plum);
+  background: rgba(123, 43, 125, 0.08);
+  border: 1px solid rgba(123, 43, 125, 0.18);
+  border-radius: 3px;
+}
+
+.loreloom-install-body pre {
+  margin: 0.6rem 0 0;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  background: rgba(51, 19, 52, 0.92);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(200, 147, 47, 0.2);
+}
+
+.loreloom-install-body pre code {
+  padding: 0;
+  font-size: 0.88rem;
+  color: #f4e6c5;
+  background: transparent;
+  border: 0;
+}
+
+.loreloom-platform-aside {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+@media (max-width: 680px) {
+  .loreloom-dl-buttons {
+    flex-direction: column;
+  }
+  .loreloom-page .loreloom-dl {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

@@ -2337,3 +2337,707 @@ h2 {
     justify-content: flex-start;
   }
 }
+
+/* === Modern Relic redesign ====================================== */
+
+.modern-relic-page {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+}
+
+.modern-relic-page h1,
+.modern-relic-page h2,
+.modern-relic-page h3,
+.modern-relic-page .service-card h3,
+.modern-relic-page .process-list span:not(.modern-relic-step-num) {
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.modern-relic-page .eyebrow,
+.modern-relic-page .section-kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  color: var(--cyan);
+}
+
+/* Hero: midnight w/ grain + drafting grid, no canvas */
+.modern-relic-hero {
+  background:
+    radial-gradient(120% 80% at 78% 0%, rgba(212, 168, 74, 0.18), transparent 55%),
+    radial-gradient(80% 60% at 8% 100%, rgba(62, 83, 100, 0.32), transparent 60%),
+    linear-gradient(180deg, #060d1c 0%, #020817 100%);
+  overflow: hidden;
+}
+
+.modern-relic-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(212, 168, 74, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 74, 0.05) 1px, transparent 1px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.66 0 0 0 0 0.29 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 56px 56px, 56px 56px, 160px 160px;
+  mix-blend-mode: screen;
+}
+
+.modern-relic-hero-inner {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  align-items: center;
+  gap: 3rem;
+}
+
+.modern-relic-hero-copy {
+  position: relative;
+  max-width: 620px;
+}
+
+.modern-relic-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem;
+  margin-bottom: 0;
+  border: 1px solid rgba(212, 168, 74, 0.42);
+  border-radius: 1px;
+  background: rgba(212, 168, 74, 0.07);
+}
+
+.modern-relic-eyebrow-mark {
+  color: var(--cyan);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.modern-relic-hero h1 {
+  margin: 1.6rem 0 0;
+  max-width: none;
+  color: #f7f3e8;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.modern-relic-em {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--cyan);
+}
+
+.modern-relic-sub {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  max-width: 32em;
+  color: var(--text-soft);
+  font-size: 1.18rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.modern-relic-actions {
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.modern-relic-page .button {
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.5rem;
+  border-radius: 2px;
+}
+
+.modern-relic-page .button-primary {
+  color: #020817;
+  background: #d4a84a;
+  border: 1px solid #d4a84a;
+  box-shadow: 0 2px 0 #97691b, 3px 5px 18px rgba(212, 168, 74, 0.28);
+}
+
+.modern-relic-page .button-primary:hover,
+.modern-relic-page .button-primary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #97691b, 4px 8px 22px rgba(212, 168, 74, 0.36);
+}
+
+.modern-relic-page .button-secondary {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid rgba(212, 168, 74, 0.4);
+}
+
+.modern-relic-page .button-secondary:hover,
+.modern-relic-page .button-secondary:focus-visible {
+  color: #f7f3e8;
+  border-color: var(--cyan);
+  background: rgba(212, 168, 74, 0.08);
+}
+
+.modern-relic-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.modern-relic-meta-sep {
+  color: rgba(212, 168, 74, 0.55);
+}
+
+.modern-relic-meta-pipe {
+  margin: 0 0.4rem;
+  color: rgba(212, 168, 74, 0.3);
+}
+
+/* Display case (vitrine) */
+.modern-relic-display {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  justify-self: end;
+  padding: 1.4rem 1.4rem 0;
+}
+
+.modern-relic-tag {
+  position: absolute;
+  top: -0.4rem;
+  right: 0;
+  padding: 0.32rem 0.6rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d4a84a;
+  background: rgba(2, 8, 23, 0.92);
+  border: 1px solid rgba(212, 168, 74, 0.55);
+  border-radius: 1px;
+}
+
+.modern-relic-vitrine {
+  position: relative;
+  padding: 1.2rem 1.6rem 1.4rem;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(212, 168, 74, 0.15), transparent 60%),
+    linear-gradient(180deg, #f7f3e8 0%, #eee5cf 100%);
+  border: 1px solid rgba(212, 168, 74, 0.6);
+  border-radius: 2px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(151, 105, 27, 0.18);
+}
+
+.modern-relic-vitrine::before,
+.modern-relic-vitrine::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(212, 168, 74, 0.7);
+  background: rgba(247, 243, 232, 0.9);
+}
+
+.modern-relic-vitrine::before {
+  top: 6px;
+  left: 6px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.modern-relic-vitrine::after {
+  bottom: 6px;
+  right: 6px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.modern-relic-bust {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(2, 8, 23, 0.22));
+}
+
+.modern-relic-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -0.45rem;
+  padding: 0.55rem 0.8rem 0.6rem;
+  background:
+    linear-gradient(180deg, #d4a84a 0%, #c19531 55%, #97691b 100%);
+  border: 1px solid #5e3f0b;
+  border-radius: 1px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 245, 215, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.modern-relic-plate-title {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.32em;
+  color: #1a1004;
+  text-shadow: 0 1px 0 rgba(255, 245, 215, 0.35);
+}
+
+.modern-relic-plate-sub {
+  margin-top: 0.18rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #3b2706;
+}
+
+/* Dimension callouts */
+.modern-relic-dim {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(212, 168, 74, 0.85);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.modern-relic-dim-line {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1px;
+  background: rgba(212, 168, 74, 0.55);
+  position: relative;
+}
+
+.modern-relic-dim-line::before,
+.modern-relic-dim-line::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  width: 1px;
+  height: 5px;
+  background: rgba(212, 168, 74, 0.7);
+}
+
+.modern-relic-dim-line::before { left: 0; }
+.modern-relic-dim-line::after { right: 0; }
+
+.modern-relic-dim-h {
+  top: 38%;
+  right: -3.4rem;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: left center;
+}
+
+.modern-relic-dim-w {
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Studio note section (parchment) */
+.modern-relic-studio {
+  position: relative;
+  padding: 6rem 0 5.5rem;
+  background:
+    radial-gradient(120% 70% at 85% 10%, rgba(212, 168, 74, 0.16), transparent 55%),
+    linear-gradient(180deg, #f4ecd5 0%, #ebdfbe 100%);
+  color: #2a1f0c;
+}
+
+.modern-relic-studio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.24 0 0 0 0 0.08 0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.42;
+}
+
+.modern-relic-studio-shell {
+  position: relative;
+  max-width: 760px;
+}
+
+.modern-relic-kicker {
+  color: var(--cyan-deep);
+}
+
+.modern-relic-kicker-light {
+  color: var(--cyan);
+}
+
+.modern-relic-studio h2 {
+  margin-top: 0.7rem;
+  color: #1a1004;
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  letter-spacing: 0.02em;
+}
+
+.modern-relic-studio-body {
+  margin-top: 1.6rem;
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: #3a2c14;
+}
+
+.modern-relic-studio-body p + p {
+  margin-top: 1.1rem;
+}
+
+.modern-relic-studio-body i {
+  color: var(--cyan-deep);
+  font-weight: 500;
+}
+
+/* Three kinds of work (dark) */
+.modern-relic-types {
+  background: linear-gradient(180deg, #020817 0%, #050e1f 100%);
+}
+
+.modern-relic-types h2 {
+  color: #f7f3e8;
+}
+
+.modern-relic-type-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.modern-relic-page .modern-relic-card {
+  position: relative;
+  padding: 2.4rem 1.6rem 1.6rem;
+  background:
+    linear-gradient(180deg, rgba(247, 243, 232, 0.02) 0%, rgba(212, 168, 74, 0.05) 100%),
+    #0a1322;
+  border: 1px solid rgba(212, 168, 74, 0.28);
+}
+
+.modern-relic-page .modern-relic-card:hover {
+  border-color: rgba(212, 168, 74, 0.6);
+  background:
+    linear-gradient(180deg, rgba(247, 243, 232, 0.04) 0%, rgba(212, 168, 74, 0.08) 100%),
+    #0c1626;
+}
+
+.modern-relic-numeral {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.2rem;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--cyan);
+  opacity: 0.55;
+}
+
+.modern-relic-page .modern-relic-card h3 {
+  margin: 0;
+  color: #f7f3e8;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+}
+
+.modern-relic-page .modern-relic-card p {
+  margin-top: 0.8rem;
+  color: var(--text-soft);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* Hide the legacy auto-numbered icon on these cards */
+.modern-relic-page .modern-relic-card .service-icon {
+  display: none;
+}
+
+/* Process (parchment, journal-style) */
+.modern-relic-process {
+  position: relative;
+  padding: 6rem 0 5.5rem;
+  background:
+    radial-gradient(120% 70% at 12% 10%, rgba(212, 168, 74, 0.14), transparent 55%),
+    linear-gradient(180deg, #ebdfbe 0%, #e0d2a6 100%);
+  color: #2a1f0c;
+}
+
+.modern-relic-process h2,
+.modern-relic-process .process-heading p:last-child {
+  color: #1a1004;
+}
+
+.modern-relic-process h2 {
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.modern-relic-process .process-heading p:last-child {
+  color: #4a3919;
+  font-style: italic;
+  font-size: 1.08rem;
+}
+
+.modern-relic-process-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modern-relic-process-list li {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.4rem 4.5rem;
+  background: rgba(255, 250, 240, 0.78);
+  border: 1px solid rgba(151, 105, 27, 0.28);
+  border-radius: 2px;
+  box-shadow: 0 2px 0 rgba(151, 105, 27, 0.16);
+}
+
+/* Suppress base process-list ::before counter — we're using our own numerals */
+.modern-relic-process-list li::before {
+  display: none;
+}
+
+.modern-relic-step-num {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: linear-gradient(180deg, #d4a84a 0%, #b78b30 55%, #97691b 100%);
+  border: 1px solid #5e3f0b;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 245, 215, 0.42),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 2px 4px rgba(151, 105, 27, 0.35);
+}
+
+/* Pseudo-element gives pixel-perfect geometric centering — bypasses
+   all font-metric quirks that flex/grid centering can't compensate for. */
+.modern-relic-step-num::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #f7f3e8;
+}
+
+.modern-relic-process-list li span:not(.modern-relic-step-num) {
+  display: block;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: 1.18rem;
+  letter-spacing: 0.08em;
+  color: #1a1004;
+  text-transform: uppercase;
+}
+
+.modern-relic-process-list li p {
+  margin-top: 0.45rem;
+  color: #4a3919;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Fit list (dark) */
+.modern-relic-fit {
+  background: linear-gradient(180deg, #050e1f 0%, #020817 100%);
+}
+
+.modern-relic-fit h2 {
+  color: #f7f3e8;
+  font-family: "Cinzel", serif;
+}
+
+.modern-relic-page .modern-relic-fit-panel {
+  padding: 2rem 2.2rem;
+  background: rgba(212, 168, 74, 0.05);
+  border: 1px solid rgba(212, 168, 74, 0.28);
+}
+
+.modern-relic-fit-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modern-relic-fit-list li {
+  position: relative;
+  padding: 0.85rem 0 0.85rem 1.8rem;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+  border-bottom: 1px dashed rgba(212, 168, 74, 0.18);
+}
+
+.modern-relic-fit-list li:last-child {
+  border-bottom: 0;
+}
+
+.modern-relic-fit-list li::before {
+  content: "\2756";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  color: var(--cyan);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* Contact (parchment) */
+.modern-relic-contact {
+  position: relative;
+  padding: 6rem 0;
+  background:
+    radial-gradient(120% 70% at 88% 90%, rgba(212, 168, 74, 0.18), transparent 55%),
+    linear-gradient(180deg, #e0d2a6 0%, #d6c389 100%);
+  color: #2a1f0c;
+}
+
+.modern-relic-contact h2 {
+  color: #1a1004;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+}
+
+.modern-relic-contact .contact-copy p {
+  color: #4a3919;
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+
+.modern-relic-contact-aside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  margin-top: 1.4rem;
+  margin-bottom: 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #5b4516;
+}
+
+.modern-relic-contact-aside .modern-relic-meta-sep {
+  color: rgba(151, 105, 27, 0.45);
+}
+
+.modern-relic-back-link {
+  display: inline-block;
+  margin-top: 1.6rem;
+  color: var(--cyan-deep);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(151, 105, 27, 0.45);
+  padding-bottom: 2px;
+}
+
+.modern-relic-back-link:hover,
+.modern-relic-back-link:focus-visible {
+  color: #1a1004;
+  border-bottom-color: #1a1004;
+}
+
+/* Header CTA - inherit modern-relic styling but tune for the page */
+.modern-relic-page .header-cta {
+  color: #020817;
+  background: var(--cyan);
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  box-shadow: 0 0 32px rgba(212, 168, 74, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .modern-relic-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .modern-relic-display {
+    margin: 0 auto;
+    justify-self: center;
+    order: -1;
+    max-width: 320px;
+  }
+
+  .modern-relic-dim-h {
+    display: none;
+  }
+
+  .modern-relic-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modern-relic-process-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .modern-relic-studio,
+  .modern-relic-process,
+  .modern-relic-contact {
+    padding: 4rem 0;
+  }
+
+  .modern-relic-process-list li {
+    padding: 1.3rem 1.2rem 1.2rem 3.8rem;
+  }
+
+  .modern-relic-step-num {
+    top: 1.1rem;
+    left: 1rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    font-size: 0.9rem;
+  }
+}

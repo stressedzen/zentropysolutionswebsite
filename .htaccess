@@ -12,7 +12,7 @@
   # Never serve dotfiles (.git, .gitignore, ...).
   RewriteRule (^|/)\. - [F]
 
-  # Files that still exist (logo, favicon, robots.txt, sitemap.xml, downloads)
+  # Files that still exist (logo, favicon, robots.txt, sitemap.xml)
   # are served as normal.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]

@@ -1,0 +1,22 @@
+# Coming soon mode: the homepage is the only page.
+# Old page URLs (services, ventures, projects, contact, ...) are sent to the
+# homepage with a temporary redirect so nobody lands on an error page.
+# Delete the block below when the new site launches.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Leave SSL certificate validation alone.
+  RewriteRule ^\.well-known/ - [L]
+
+  # Never serve dotfiles (.git, .gitignore, ...).
+  RewriteRule (^|/)\. - [F]
+
+  # Files that still exist (logo, favicon, robots.txt, sitemap.xml, downloads)
+  # are served as normal.
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Everything else goes to the homepage.
+  RewriteRule ^.+$ / [R=302,L]
+</IfModule>

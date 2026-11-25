@@ -3,16 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zentropy Solutions | Design, Engineering &amp; Ventures</title>
+    <title>Zentropy Solutions | Coming soon</title>
     <meta
       name="description"
-      content="Zentropy Solutions is a design, engineering, and manufacturing studio building practical products, prototypes, and ventures."
+      content="Zentropy Solutions is being rebuilt. A new site is on the way. In the meantime, get in touch by email."
     >
     <meta property="og:title" content="Zentropy Solutions">
-    <meta
-      property="og:description"
-      content="Design, 3D printing, scanning, CAD, prototyping, and venture-building."
-    >
+    <meta property="og:description" content="A new Zentropy is on the way.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zentropy.solutions/">
     <meta property="og:image" content="https://zentropy.solutions/assets/img/zentropy-social.png">
@@ -20,258 +17,327 @@
     <link rel="canonical" href="https://zentropy.solutions/">
     <link rel="icon" href="assets/icons/zentropy-favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/icons/zentropy-favicon.png">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+      :root {
+        --black: #000000;
+        --text: #ecedee;
+        --text-soft: #c8d1d5;
+        --muted: #8c989f;
+        --cyan: #65eff6;
+        --line: rgba(236, 237, 238, 0.16);
+        --line-strong: rgba(101, 239, 246, 0.4);
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--black);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .stage {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: 1fr auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      /* Drifting point mesh carried over from the old hero. */
+      .stage-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Fades the mesh out behind the logo and copy so they sit on clean black. */
+      .stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: radial-gradient(
+          ellipse 72% 68% at 50% 46%,
+          #000 0%,
+          #000 48%,
+          rgba(0, 0, 0, 0.72) 70%,
+          rgba(0, 0, 0, 0.3) 100%
+        );
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 20px 24px;
+        text-align: center;
+      }
+
+      .logo {
+        display: block;
+        /* The image has wide black margins, so on phones it is allowed to run
+           past the screen edges to keep the mark itself a readable size. */
+        --logo-width: min(135vw, 680px);
+        width: var(--logo-width);
+        max-width: none;
+        height: auto;
+        margin-inline: calc((100% - var(--logo-width)) / 2);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: clamp(20px, 4vh, 40px) 0 0;
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 12px rgba(101, 239, 246, 0.8);
+        animation: pulse 2.4s ease-in-out infinite;
+      }
+
+      h1 {
+        max-width: 16ch;
+        margin: 18px 0 0;
+        font-size: clamp(2rem, 6vw, 3.4rem);
+        font-weight: 650;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+
+      .lede {
+        max-width: 44ch;
+        margin: 18px 0 0;
+        color: var(--text-soft);
+        font-size: clamp(1rem, 2.4vw, 1.12rem);
+        text-wrap: pretty;
+      }
+
+      .contact {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        margin-top: 30px;
+        padding: 0 24px;
+        color: var(--text);
+        font-size: 0.98rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(101, 239, 246, 0.06);
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .contact:hover,
+      .contact:focus-visible {
+        border-color: var(--cyan);
+        background: rgba(101, 239, 246, 0.14);
+        box-shadow: 0 0 32px rgba(101, 239, 246, 0.18);
+      }
+
+      .contact:focus-visible {
+        outline: 2px solid var(--cyan);
+        outline-offset: 3px;
+      }
+
+      footer {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-align: center;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.35;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .eyebrow::before {
+          animation: none;
+        }
+
+        .contact {
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header" data-site-header>
-      <a class="brand" href="#top" aria-label="Zentropy Solutions home">
-        <img src="assets/logos/zentropy-wordmark.webp" alt="Zentropy Solutions">
-      </a>
+    <div class="stage">
+      <canvas class="stage-canvas" id="stage-canvas" aria-hidden="true"></canvas>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-        <span class="nav-toggle-line"></span>
-        <span class="nav-toggle-line"></span>
-        <span class="nav-toggle-line"></span>
-        <span class="sr-only">Menu</span>
-      </button>
+      <main class="content">
+        <img
+          class="logo"
+          src="assets/logos/zentropy-logo.webp"
+          width="1800"
+          height="550"
+          alt="Zentropy Solutions"
+        >
+        <p class="eyebrow">Coming soon</p>
+        <h1>A new Zentropy is on the way.</h1>
+        <p class="lede">
+          The site is offline while we rework what we do and how we do it. Until it is back,
+          email is the best way to reach us.
+        </p>
+        <a class="contact" href="mailto:info@zentropy.solutions">info@zentropy.solutions</a>
+      </main>
 
-      <nav class="primary-nav" id="primary-nav" aria-label="Primary" data-primary-nav>
-        <a href="services/">Services</a>
-        <a href="ventures/">Ventures</a>
-        <a href="projects/">Projects</a>
-        <a href="#about">About</a>
-        <a href="contact/">Contact</a>
-      </nav>
+      <footer>&copy; <span data-year>2026</span> Zentropy Solutions</footer>
+    </div>
 
-      <a class="header-cta" href="mailto:info@zentropy.solutions?subject=Project%20enquiry">Get in touch</a>
-    </header>
+    <script>
+      (function () {
+        var yearTarget = document.querySelector("[data-year]");
+        if (yearTarget) {
+          yearTarget.textContent = new Date().getFullYear();
+        }
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
-        <div class="hero-grid" aria-hidden="true"></div>
+        var canvas = document.getElementById("stage-canvas");
+        var context = canvas && canvas.getContext ? canvas.getContext("2d") : null;
+        if (!context) {
+          return;
+        }
 
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="eyebrow">Design / engineering / manufacturing</p>
-            <h1 id="hero-title">A practical studio for products, prototypes, and ventures.</h1>
-            <p class="hero-lede">
-              Zentropy Solutions helps turn concepts, scans, parts, and experiments into real
-              objects, clean files, and venture-ready systems. The work spans design, CAD,
-              scanning, printing, prototyping, and small-scale manufacturing support.
-            </p>
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="button button-primary" href="contact/">Start a conversation</a>
-              <a class="button button-secondary" href="services/">Explore services</a>
-            </div>
-          </div>
+        var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var palette = ["#65eff6", "#2fa9bc", "#9da2a6", "#ecedee"];
+        var linkDistance = 138;
+        var width = 0;
+        var height = 0;
+        var points = [];
+        var frame = 0;
+        var animationId = 0;
 
-          <div class="hero-logo-panel" aria-label="Zentropy Solutions mark">
-            <img src="assets/logos/zentropy-mark.webp" alt="Zentropy Solutions mark">
-          </div>
+        function resize() {
+          var rect = canvas.getBoundingClientRect();
+          var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+          width = Math.max(1, Math.floor(rect.width));
+          height = Math.max(1, Math.floor(rect.height));
+          canvas.width = Math.floor(width * pixelRatio);
+          canvas.height = Math.floor(height * pixelRatio);
+          context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-          <dl class="signal-list" aria-label="Zentropy capabilities">
-            <div>
-              <dt>Design to CAD</dt>
-              <dd>Concept shaping, clean modelling, assemblies, and manufacturable files.</dd>
-            </div>
-            <div>
-              <dt>Scan to Part</dt>
-              <dd>Capture existing geometry for reverse engineering, duplication, or refinement.</dd>
-            </div>
-            <div>
-              <dt>Prototype to Run</dt>
-              <dd>Printing, testing, iteration, and short-run production support.</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
+          var spacing = width < 700 ? 86 : 112;
+          var columns = Math.ceil(width / spacing) + 2;
+          var rows = Math.ceil(height / spacing) + 2;
+          points = [];
 
-      <section class="intro-section" id="about" aria-labelledby="about-title">
-        <div class="section-shell intro-grid">
-          <div>
-            <p class="section-kicker">About Zentropy</p>
-            <h2 id="about-title">A lightweight structure for useful making.</h2>
-          </div>
-          <div class="intro-copy">
-            <p>
-              Zentropy Solutions operates as a studio hub: one place for client work, internal
-              experiments, and sub-brands that need real technical support behind the aesthetic.
-            </p>
-            <p>
-              That means the same core capabilities can serve a prototype, a replacement part, a
-              sculptural object, or a future venture without rebuilding the system each time.
-            </p>
-          </div>
-        </div>
-      </section>
+          for (var row = -1; row < rows; row += 1) {
+            for (var column = -1; column < columns; column += 1) {
+              var seed = row * 97 + column * 53;
+              points.push({
+                baseX: column * spacing + ((seed * 17) % 31),
+                baseY: row * spacing + ((seed * 23) % 37),
+                x: 0,
+                y: 0,
+                phase: seed,
+                color: palette[Math.abs(seed) % palette.length],
+              });
+            }
+          }
+        }
 
-      <section class="services-section" aria-labelledby="services-title">
-        <div class="section-shell">
-          <div class="section-heading">
-            <p class="section-kicker">Services overview</p>
-            <h2 id="services-title">A short view of what we do.</h2>
-          </div>
+        function draw() {
+          var time = frame * 0.006;
+          var i;
+          var j;
 
-          <div class="service-grid">
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">01</span>
-              <h3>3D Printing</h3>
-              <p>Functional FDM prints, prototypes, replacement parts, fixtures, and short runs.</p>
-            </article>
+          context.clearRect(0, 0, width, height);
 
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">02</span>
-              <h3>Resin Printing</h3>
-              <p>High-detail prints for presentation pieces, fine geometry, and premium surfaces.</p>
-            </article>
+          for (i = 0; i < points.length; i += 1) {
+            points[i].x = points[i].baseX + Math.sin(time + points[i].phase) * 12;
+            points[i].y = points[i].baseY + Math.cos(time * 0.8 + points[i].phase) * 10;
+          }
 
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">03</span>
-              <h3>3D Scanning</h3>
-              <p>Scan existing objects for restoration, reverse engineering, or digital reuse.</p>
-            </article>
+          context.lineWidth = 1;
 
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">04</span>
-              <h3>CAD &amp; Design</h3>
-              <p>Solid models, assemblies, part clean-up, and product thinking that can be made.</p>
-            </article>
+          for (i = 0; i < points.length; i += 1) {
+            for (j = i + 1; j < points.length; j += 1) {
+              var distance = Math.hypot(points[i].x - points[j].x, points[i].y - points[j].y);
 
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">05</span>
-              <h3>Engineering Support</h3>
-              <p>Tolerances, fit, materials, and print choices that improve useful outcomes.</p>
-            </article>
+              if (distance < linkDistance) {
+                var alpha = (1 - distance / linkDistance) * 0.2;
+                context.strokeStyle = "rgba(101, 239, 246, " + alpha + ")";
+                context.beginPath();
+                context.moveTo(points[i].x, points[i].y);
+                context.lineTo(points[j].x, points[j].y);
+                context.stroke();
+              }
+            }
+          }
 
-            <article class="service-card">
-              <span class="service-icon" aria-hidden="true">06</span>
-              <h3>Production Support</h3>
-              <p>Iteration, documentation, and small-batch pathways when prototypes need to scale.</p>
-            </article>
-          </div>
+          context.globalAlpha = 0.72;
+          for (i = 0; i < points.length; i += 1) {
+            context.fillStyle = points[i].color;
+            context.beginPath();
+            context.arc(points[i].x, points[i].y, 3.2, 0, Math.PI * 2);
+            context.fill();
+          }
+          context.globalAlpha = 1;
 
-          <div class="section-link-row">
-            <a class="text-link" href="services/">See the full services page</a>
-          </div>
-        </div>
-      </section>
+          frame += 1;
 
-      <section class="fit-section" aria-labelledby="ventures-title">
-        <div class="section-shell">
-          <div class="section-heading">
-            <p class="section-kicker">Featured ventures</p>
-            <h2 id="ventures-title">Projects that sit inside the studio.</h2>
-          </div>
+          if (!reducedMotion.matches) {
+            animationId = window.requestAnimationFrame(draw);
+          }
+        }
 
-          <div class="service-grid venture-grid">
-            <article class="service-card venture-card">
-              <img class="venture-card-logo" src="assets/logos/modern-relic-stacked.webp" alt="Modern Relic">
-              <p class="venture-card-copy">
-                A design-forward venture exploring artifact-like objects shaped through scanning,
-                modelling, printing, and restrained finishing.
-              </p>
-              <a class="text-link" href="ventures/modern-relic/">Visit Modern Relic</a>
-            </article>
+        function restart() {
+          window.cancelAnimationFrame(animationId);
+          resize();
+          draw();
+        }
 
-            <article class="service-card venture-card venture-card-loreloom">
-              <img
-                class="venture-card-logo venture-card-logo-loreloom"
-                src="assets/ventures/loreloom/loreloom-logo.webp"
-                alt="LoreLoom logo with plum and gold lettering and a quill"
-              >
-              <p>
-                A writer-first storytelling and worldbuilding platform for nonlinear minds,
-                flexible node-based structure, and human-led creative flow.
-              </p>
-              <a class="text-link" href="ventures/loreloom/">Visit LoreLoom</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="process-section" aria-labelledby="projects-title">
-        <div class="section-shell process-layout">
-          <div class="section-heading process-heading">
-            <p class="section-kicker">Selected work</p>
-            <h2 id="projects-title">Examples, prototypes, and future case studies.</h2>
-            <p>
-              The projects area is set up to grow into a proper archive of client work, internal
-              experiments, and finished outcomes.
-            </p>
-          </div>
-
-          <div class="project-grid">
-            <article class="project-card">
-              <span class="project-label">Reverse engineering</span>
-              <h3>Scanned part recovery</h3>
-              <p>Existing geometry captured, cleaned, remodelled, and prepared for print or fit tests.</p>
-            </article>
-
-            <article class="project-card">
-              <span class="project-label">Product development</span>
-              <h3>Prototype to iteration loop</h3>
-              <p>CAD, print, test, revise, and repeat until the part is stable enough to keep.</p>
-            </article>
-
-            <article class="project-card">
-              <span class="project-label">Venture work</span>
-              <h3>Modern Relic objects</h3>
-              <p>Design-led pieces that blend sculptural character with digital craft and making.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="hub-process-section" aria-labelledby="process-title">
-        <div class="section-shell">
-          <div class="section-heading">
-            <p class="section-kicker">Process</p>
-            <h2 id="process-title">A simple path from idea to outcome.</h2>
-          </div>
-
-          <ol class="process-list process-list-compact">
-            <li>
-              <span>Define</span>
-              <p>Clarify the object, use case, constraints, and what success looks like.</p>
-            </li>
-            <li>
-              <span>Build</span>
-              <p>Model, scan, print, and prepare the first useful version as quickly as possible.</p>
-            </li>
-            <li>
-              <span>Refine</span>
-              <p>Improve fit, finish, material choice, and repeatability based on real feedback.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="contact-section" aria-labelledby="contact-title">
-        <div class="section-shell contact-layout">
-          <div>
-            <p class="section-kicker">Contact</p>
-            <h2 id="contact-title">Bring the brief, the broken part, or the venture idea.</h2>
-          </div>
-          <div class="contact-copy">
-            <p>
-              If you have a concept that needs structure, a part that needs rebuilding, or a
-              venture that needs design and technical support under one roof, this is the place to
-              start.
-            </p>
-            <a class="button button-primary" href="contact/">Contact Zentropy</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="section-shell footer-layout">
-        <p>&copy; <span data-year></span> Zentropy Solutions. All rights reserved.</p>
-        <a class="kofi-link" href="https://ko-fi.com/zentropysolutions" target="_blank" rel="noopener">Support on Ko-fi</a>
-        <a href="#top">Back to top</a>
-      </div>
-    </footer>
+        restart();
+        window.addEventListener("resize", restart);
+        if (reducedMotion.addEventListener) {
+          reducedMotion.addEventListener("change", restart);
+        }
+      })();
+    </script>
   </body>
 </html>
